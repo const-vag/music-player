@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import React, { Fragment } from "react";
+import { BottomTabNavigatorStack } from "./src/navigator/BottomTabNavigator";
+import {
+  PaperProvider,
+  MD3DarkTheme,
+  MD3LightTheme,
+  MD3Theme,
+} from "react-native-paper";
+import { useMaterial3Theme } from "@pchmn/expo-material3-theme";
+import { useColorScheme } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AppNavigator } from "./src/navigator/AppNavigator";
 
 export default function App() {
+  const colorScheme = useColorScheme();
+  const { theme } = useMaterial3Theme();
+
+  const paperTheme: MD3Theme =
+    colorScheme === "dark"
+      ? { ...MD3DarkTheme, colors: theme.dark, mode: "adaptive" }
+      : { ...MD3LightTheme, colors: theme.light, mode: "adaptive" };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <PaperProvider theme={paperTheme}>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
