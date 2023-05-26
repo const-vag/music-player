@@ -1,18 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { useTheme } from "react-native-paper";
+import { Box } from "../../ui-kit/Box";
 
 export const SignIn = () => {
   const theme = useTheme();
 
   return (
-    <View
-      style={{ ...styles.container, backgroundColor: theme.colors.background }}
-    >
+    <Box style={styles.container}>
       <Text>Sign in</Text>
       <StatusBar style="auto" />
-    </View>
+    </Box>
   );
 };
 

@@ -1,18 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Text, useTheme } from "react-native-paper";
+import { Box } from "../../ui-kit/Box";
 
 export const More = () => {
   const theme = useTheme();
 
   return (
-    <View
-      style={{ ...styles.container, backgroundColor: theme.colors.background }}
-    >
+    <Box style={styles.container}>
       <Text>More</Text>
       <StatusBar style="auto" />
-    </View>
+    </Box>
   );
 };
 
