@@ -1,25 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, StyleSheet } from "react-native";
-import { useTheme } from "react-native-paper";
-import { Box } from "../../ui-kit/Box";
+import { Text } from "react-native";
+import { Container } from "../../ui-kit/Container";
 
 export const SignIn = () => {
-  const theme = useTheme();
-
   return (
-    <Box style={styles.container}>
+    <Container>
       <Text>Sign in</Text>
-      <StatusBar style="auto" />
-    </Box>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
