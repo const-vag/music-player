@@ -1,7 +1,6 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import React, { Fragment } from "react";
-import { BottomTabNavigatorStack } from "./src/navigator/BottomTabNavigator";
+import React from "react";
 import {
   PaperProvider,
   MD3DarkTheme,
