@@ -2,7 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { RouteParamList, Routes } from "./types";
 import { BottomTabNavigatorStack } from "./BottomTabNavigator";
-import { SignInStack } from "../screens/sign-in/SignInStack";
+import { SignIn } from "../screens/sign-in/SignIn";
 
 const RootStack = createStackNavigator<RouteParamList>();
 
@@ -21,7 +21,7 @@ export const AppNavigator = () => {
         <RootStack.Screen
           options={{ headerShown: false }}
           name={Routes.SIGNIN}
-          component={SignInStack}
+          component={SignIn}
         />
       )}
     </RootStack.Navigator>
