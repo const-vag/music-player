@@ -3,10 +3,12 @@ import { IconButton, Text } from "react-native-paper";
 import { Box } from "../../ui-kit/Box/Box";
 import { Container } from "../../ui-kit/Container";
 import { Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { usePlayer } from "./usePlayer";
+import { Spacer } from "../../ui-kit/Spacer";
 
 export const Player = () => {
-  const navigation = useNavigation();
+  const { navigation } = usePlayer();
+
   return (
     <Container onClose={navigation.goBack}>
       <Image
@@ -24,13 +26,13 @@ export const Player = () => {
           size={54}
           onPress={() => console.log("Pressed")}
         />
-        <Box mh={20}>
-          <IconButton
-            icon="play"
-            size={84}
-            onPress={() => console.log("Pressed")}
-          />
-        </Box>
+        <Spacer mode="horizontal" />
+        <IconButton
+          icon="play"
+          size={84}
+          onPress={() => console.log("Pressed")}
+        />
+        <Spacer mode="horizontal" />
         <IconButton
           icon="skip-next"
           size={54}
