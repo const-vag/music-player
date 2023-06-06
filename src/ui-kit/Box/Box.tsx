@@ -12,8 +12,8 @@ export const Box = (props: BoxProps) => {
       {...props}
       style={[
         {
-          flexDirection: direction,
           backgroundColor: theme.colors.background,
+          flexDirection: direction,
           margin: props.m,
           marginBottom: props.mb,
           marginTop: props.mt,
@@ -42,4 +42,3 @@ const styles = StyleSheet.create({
   },
 });
 export { BoxProps };
-
