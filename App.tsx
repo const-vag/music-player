@@ -11,6 +11,9 @@ import { useMaterial3Theme } from "@pchmn/expo-material3-theme";
 import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AppNavigator } from "./src/navigator/AppNavigator";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -22,12 +25,14 @@ export default function App() {
       : { ...MD3LightTheme, colors: theme.light, mode: "adaptive" };
 
   return (
-    <SafeAreaProvider>
-      <PaperProvider theme={paperTheme}>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-      </PaperProvider>
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <PaperProvider theme={paperTheme}>
+          <NavigationContainer>
+            <AppNavigator />
+          </NavigationContainer>
+        </PaperProvider>
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 }
