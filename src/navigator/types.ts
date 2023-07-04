@@ -1,5 +1,5 @@
-export enum Routes {
-  SIGNIN = "Sign in",
+export enum AppNavigatorRoutes {
+  AUTHENTICATION = "Authentication",
   MAIN = "Main",
 }
 
@@ -15,7 +15,7 @@ export type BottomTabParamList = {
   [BottomTabRoutes.PLAYER]: undefined;
 };
 
-export type RouteParamList = {
-  [Routes.SIGNIN]: undefined;
-  [Routes.MAIN]: undefined;
+export type AppNavigatorRouteParamList = {
+  [AppNavigatorRoutes.AUTHENTICATION]: undefined;
+  [AppNavigatorRoutes.MAIN]: undefined;
 };

@@ -1,27 +1,28 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { RouteParamList, Routes } from "./types";
+import { AppNavigatorRouteParamList, AppNavigatorRoutes } from "./types";
 import { MainNavigatorStack } from "./MainNavigatorStack";
-import { SignIn } from "../screens/sign-in/SignIn";
+import { SignIn } from "../screens/authentication/sign-in/SignIn";
+import { AuthenticationStack } from "../screens/authentication/AuthenticationStack";
 
-const RootStack = createStackNavigator<RouteParamList>();
+const RootStack = createStackNavigator<AppNavigatorRouteParamList>();
 
 export const AppNavigator = () => {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return (
     <RootStack.Navigator>
       {isAuthenticated ? (
         <RootStack.Screen
           options={{ headerShown: false }}
-          name={Routes.MAIN}
+          name={AppNavigatorRoutes.MAIN}
           component={MainNavigatorStack}
         />
       ) : (
         <RootStack.Screen
           options={{ headerShown: false }}
-          name={Routes.SIGNIN}
-          component={SignIn}
+          name={AppNavigatorRoutes.AUTHENTICATION}
+          component={AuthenticationStack}
         />
       )}
     </RootStack.Navigator>
