@@ -1,13 +1,15 @@
 import React from "react";
-import { Container } from "../../ui-kit/Container";
-import { Typography } from "../../ui-kit/Typography";
-import { TextField } from "../../form-components/TextField/TextField";
 import { useSignIn } from "./useSignIn";
 import { Button } from "react-native-paper";
-import { Spacer } from "../../ui-kit/Spacer";
+import { Typography } from "../../../ui-kit/Typography";
+import { Container } from "../../../ui-kit/Container";
+import { Spacer } from "../../../ui-kit/Spacer";
+import { TextField } from "../../../form-components/TextField/TextField";
+
+const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
 export const SignIn = () => {
-  const { form, onSubmit } = useSignIn();
+  const { form, onSubmit, goToSignUp } = useSignIn();
 
   return (
     <Container>
@@ -16,6 +18,10 @@ export const SignIn = () => {
       <TextField
         rules={{
           required: "Email is required",
+          pattern: {
+            value: EMAIL_REGEX,
+            message: "Please enter a valid email!",
+          },
         }}
         placeholder="Email"
         name="email"
@@ -33,6 +39,8 @@ export const SignIn = () => {
       <Button onPress={form.handleSubmit(onSubmit)} mode="contained">
         Login
       </Button>
+      <Spacer />
+      <Button onPress={goToSignUp}>Not having an account? Sign up</Button>
     </Container>
   );
 };
