@@ -2,13 +2,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { AppNavigatorRouteParamList, AppNavigatorRoutes } from "./types";
 import { MainNavigatorStack } from "./MainNavigatorStack";
-import { SignIn } from "../screens/authentication/sign-in/SignIn";
 import { AuthenticationStack } from "../screens/authentication/AuthenticationStack";
 
 const RootStack = createStackNavigator<AppNavigatorRouteParamList>();
 
 export const AppNavigator = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
     <RootStack.Navigator>
