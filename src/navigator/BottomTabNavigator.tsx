@@ -5,8 +5,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BottomTabParamList, BottomTabRoutes } from "./types";
 import { AnimatedFAB, BottomNavigation } from "react-native-paper";
 import { Home } from "../screens/home/Home";
-import { Search } from "../screens/search/Search";
 import { More } from "../screens/more/More";
+import { SearchStack } from "../screens/search/SearchStack";
 
 type BaseRoute = ComponentProps<
   typeof BottomNavigation
@@ -30,7 +30,7 @@ export const BottomTabNavigator = () => {
 
   const renderScene = BottomNavigation.SceneMap({
     [BottomTabRoutes.HOME]: Home,
-    [BottomTabRoutes.SEARCH]: Search,
+    [BottomTabRoutes.SEARCH]: SearchStack,
     [BottomTabRoutes.MORE]: More,
   });
 
