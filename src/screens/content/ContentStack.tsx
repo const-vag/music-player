@@ -13,7 +13,7 @@ export const ContentStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         options={{
-          ...TransitionPresets.ModalPresentationIOS,
+          ...TransitionPresets.DefaultTransition,
           headerShown: false,
           gestureEnabled: true,
         }}
@@ -22,7 +22,7 @@ export const ContentStack = () => {
       />
       <Stack.Screen
         options={{
-          ...TransitionPresets.ModalPresentationIOS,
+          ...TransitionPresets.DefaultTransition,
           headerShown: false,
           gestureEnabled: true,
         }}

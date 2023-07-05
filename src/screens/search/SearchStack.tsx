@@ -22,7 +22,7 @@ export const SearchStack = () => {
       />
       <Stack.Screen
         options={{
-          ...TransitionPresets.ModalPresentationIOS,
+          ...TransitionPresets.SlideFromRightIOS,
           headerShown: false,
           gestureEnabled: true,
         }}
