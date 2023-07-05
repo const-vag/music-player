@@ -9,7 +9,7 @@ const RootStack = createStackNavigator<AppNavigatorRouteParamList>();
 
 export const AppNavigator = () => {
   const authToken = useAuthToken();
-  console.log("🚀 ~ file: AppNavigator.tsx:13 ~ AppNavigator ~ accessToken:", accessToken)
+  console.log("🚀 ~ file: AppNavigator.tsx:13 ~ AppNavigator ~ accessToken:", authToken)
 
   return (
     <RootStack.Navigator>
