@@ -3,7 +3,7 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import { SearchRoutes, SearchStackParamList } from "./types";
-import { SearchContent } from "./SearchContent";
+import { SearchMain } from "./SearchMain";
 import { ContentStack } from "../content/ContentStack";
 
 const Stack = createStackNavigator<SearchStackParamList>();
@@ -17,8 +17,8 @@ export const SearchStack = () => {
           headerShown: false,
           gestureEnabled: true,
         }}
-        name={SearchRoutes.SEARCH_BAR}
-        component={SearchContent}
+        name={SearchRoutes.MAIN}
+        component={SearchMain}
       />
       <Stack.Screen
         options={{

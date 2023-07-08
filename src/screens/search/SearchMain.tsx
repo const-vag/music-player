@@ -3,7 +3,7 @@ import { Button } from "react-native-paper";
 import { Container } from "../../ui-kit/Container";
 import { useSearchContent } from "./useSearchContent";
 
-export const SearchContent = () => {
+export const SearchMain = () => {
   const { goToHawkTsibouki } = useSearchContent();
   return (
     <Container>
