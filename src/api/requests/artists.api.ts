@@ -7,7 +7,7 @@ const artistsUrl = `${API_URL}/artists`;
 export interface Artist {
   albums: Album[];
   createdAt: Date;
-  id: number;
+  id: string;
   image: string;
   language: string;
   name: string;

@@ -6,7 +6,7 @@ export enum Type {
 export interface Album {
   artistId: number;
   createdAt: Date;
-  id: number;
+  id: string;
   image: string;
   name: string;
   releaseDate: Date;
