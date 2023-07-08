@@ -11,13 +11,19 @@ export const useArtist = () => {
   const artistQuery = useArtistQuery(params.id);
 
   const seperateAlbumsAndSingles = (albums: Album[]) => {
-    return albums.reduce((acc: {singles: Album[], albums: Album[]}, album) => {
-      if(album.type === Type.Album) {
-        return {...acc, albums: [...acc.albums, album]}
-      }
-      return {...acc, singles: [...acc.singles, album]}
-
-    }, {singles: [], albums: []})
+    const seperatedData = albums.reduce(
+      (acc: { singles: Album[]; albums: Album[] }, album) => {
+        if (album.type === Type.Album) {
+          return { ...acc, albums: [...acc.albums, album] };
+        }
+        return { ...acc, singles: [...acc.singles, album] };
+      },
+      { singles: [], albums: [] }
+    );
+    return [
+      { title: "Albums", data: seperatedData.albums },
+      { title: "Singles", data: seperatedData.singles },
+    ];
   };
 
   return { artistQuery, seperateAlbumsAndSingles };

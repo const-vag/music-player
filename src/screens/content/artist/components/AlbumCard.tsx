@@ -1,8 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { Box } from "../../../../ui-kit/Box/Box";
 import { Album } from "../../../../api/requests/albums.api";
 import { Image } from "react-native";
 import { Typography } from "../../../../ui-kit/Typography";
+import { uiVariables } from "../../../../ui-kit/variables";
 
 type AlbumCardProps = {
   album: Album;
@@ -10,9 +11,9 @@ type AlbumCardProps = {
 
 const IMAGE_SIZE = 60;
 
-export const AlbumCard = ({ album }: AlbumCardProps) => {
+const AlbumCardComponent = ({ album }: AlbumCardProps) => {
   return (
-    <Box mv={10} direction="row">
+    <Box ph={uiVariables.spacer.horizontalPadding} direction="row">
       <Image
         style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
         source={{ uri: album.image }}
@@ -26,3 +27,5 @@ export const AlbumCard = ({ album }: AlbumCardProps) => {
     </Box>
   );
 };
+
+export const AlbumCard = memo(AlbumCardComponent)

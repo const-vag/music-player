@@ -1,18 +1,17 @@
 import React from "react";
-import { Dimensions, Image } from "react-native";
-import { Container } from "../../../ui-kit/Container";
-import { Typography } from "../../../ui-kit/Typography";
-import { useArtist } from "./useArtist";
-import { ActivityIndicator, useTheme } from "react-native-paper";
-import { ScrollView } from "react-native";
+import { Image, SectionList, SectionListRenderItemInfo } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
+import { Album } from "../../../api/requests/albums.api";
 import { Box } from "../../../ui-kit/Box/Box";
-import { AlbumCard } from "./components/AlbumCard";
+import { Container } from "../../../ui-kit/Container";
 import { Spacer } from "../../../ui-kit/Spacer";
+import { Typography } from "../../../ui-kit/Typography";
 import { uiVariables } from "../../../ui-kit/variables";
+import { AlbumCard } from "./components/AlbumCard";
+import { useArtist } from "./useArtist";
 
 export const Artist = () => {
   const { artistQuery, seperateAlbumsAndSingles } = useArtist();
-  const dimensions = Dimensions.get("window");
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)
     return (
@@ -22,54 +21,66 @@ export const Artist = () => {
     );
 
   const artist = artistQuery.data;
-  const { albums, singles } = seperateAlbumsAndSingles(artist.albums);
+  const seperatedData = seperateAlbumsAndSingles(artist.albums);
 
   return (
     <Container ph={0}>
-      <ScrollView>
-        <Box>
-          <Image
-            resizeMode="cover"
-            style={{
-              width: dimensions.width,
-              height: 350,
-            }}
-            source={{
-              uri: artist.image,
-            }}
-          />
+      <SectionList
+        sections={seperatedData}
+        renderSectionHeader={({ section: { title } }) => (
           <Typography
-            variant="displayMedium"
             style={{
-              position: "absolute",
-              bottom: 0,
-              left: uiVariables.spacer.horizontalPadding,
-              fontWeight: "bold",
+              paddingHorizontal: uiVariables.spacer.horizontalPadding,
+              marginVertical: 15,
             }}
+            variant="titleLarge"
           >
-            {artist.name}
+            {title}
           </Typography>
-        </Box>
-        <Box ph={uiVariables.spacer.horizontalPadding} style={{ alignItems: "flex-start" }}>
-          {albums.length > 0 && (
-            <Box mv={10} style={{ alignItems: "flex-start" }}>
-              <Typography variant="titleLarge">Albums</Typography>
-              {albums.map((album) => (
-                <AlbumCard key={album.id} album={album} />
-              ))}
-            </Box>
-          )}
-          {singles.length > 0 && (
-            <Box mv={10} style={{ alignItems: "flex-start" }}>
-              <Typography variant="titleLarge">Singles</Typography>
-              {singles.map((album) => (
-                <AlbumCard key={album.id} album={album} />
-              ))}
-            </Box>
-          )}
-        </Box>
-        <Spacer size={70} />
-      </ScrollView>
+        )}
+        ListHeaderComponent={
+          <Box>
+            <Image
+              style={{
+                width: 450,
+                height: 350,
+              }}
+              source={{
+                uri: artist.image,
+              }}
+            />
+            <Typography
+              variant="displayMedium"
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: uiVariables.spacer.horizontalPadding,
+                fontWeight: "bold",
+              }}
+            >
+              {artist.name}
+            </Typography>
+          </Box>
+        }
+        data={artist.albums}
+        ItemSeparatorComponent={() => <Spacer size={10} />}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListFooterComponent={<Spacer size={70} />}
+        removeClippedSubviews
+      />
     </Container>
   );
 };
+
+const renderItem = ({
+  item,
+}: SectionListRenderItemInfo<
+  Album,
+  {
+    title: string;
+    data: Album[];
+  }
+>) => <AlbumCard album={item} />;
+
+const keyExtractor = (album: Album) => album.id;
