@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Box, BoxProps } from "./Box/Box";
 import { StatusBar } from "expo-status-bar";
 import { IconButton } from "react-native-paper";
+import { uiVariables } from "./variables";
 
 type ContainerProps = BoxProps & {
   onClose?: () => void;
@@ -17,7 +18,15 @@ export const Container = (props: ContainerProps) => {
           <IconButton onPress={onClose} icon="chevron-down" size={34} />
         </Box>
       )}
-      <Box {...props} style={styles.container}>
+      <Box
+        {...props}
+        ph={
+          props.ph === undefined
+            ? uiVariables.spacer.horizontalPadding
+            : props.ph
+        }
+        style={styles.container}
+      >
         <StatusBar style="auto" />
         {children}
       </Box>
