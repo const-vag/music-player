@@ -1,6 +1,6 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { ContentParamList, ContentRoutes } from "../types";
-import { useArtistQuery } from "../../../api/hooks/artists";
+import { useArtistQuery } from "../../../api/hooks/artists.query";
 
 type ArtistRouteProp = RouteProp<ContentParamList, ContentRoutes.ARTIST>;
 

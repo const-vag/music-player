@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Keyboard } from "react-native";
-import { useSignInMutation } from "../../../api/hooks/signIn";
+import { useSignInMutation } from "../../../api/hooks/signIn.query";
 import { SignUpFormValues } from "./types";
 
 export const useSignIn = () => {

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getArtistRequest } from "../requests/artists";
+import { getArtistRequest } from "../requests/artists.api";
 import { isAxiosError } from "axios";
 
 export const useArtistQuery = (id: string) => {

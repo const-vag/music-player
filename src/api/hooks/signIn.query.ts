@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { isAxiosError } from "axios";
-import { SignInErrorResponse, signInRequest } from "../requests/signIn";
+import { SignInErrorResponse, signInRequest } from "../requests/signIn.api";
 import { AUTH_TOKEN_KEY } from "../../shared/hooks/useAuthToken";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Keyboard } from "react-native";
-import { useSignInMutation } from "../../../api/hooks/signIn";
+import { useSignInMutation } from "../../../api/hooks/signIn.query";
 import { SignInFormValues } from "./types";
 import { useNavigation } from "@react-navigation/native";
 import { AuthenticationRouteParamList, AuthenticationRoutes } from "../types";
