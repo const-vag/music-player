@@ -8,12 +8,6 @@ export type SignInSuccessResponse = {
   access_token: string;
 };
 
-export type SignInErrorResponse = {
-  statusCode: number;
-  message: string[];
-  error: string;
-};
-
 export const signInRequest = async (values: SignInFormValues) => {
   return (await axios.post<SignInSuccessResponse>(signInUrl, values)).data;
 };
