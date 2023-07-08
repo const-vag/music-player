@@ -5,9 +5,15 @@ import { SignInFormValues } from "./types";
 import { useNavigation } from "@react-navigation/native";
 import { AuthenticationRouteParamList, AuthenticationRoutes } from "../types";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { DEFAULT_EMAIL, DEFAULT_PASSWORD } from "@env";
 
 export const useSignIn = () => {
-  const form = useForm<SignInFormValues>();
+  const form = useForm<SignInFormValues>({
+    defaultValues: {
+      email: DEFAULT_EMAIL,
+      password: DEFAULT_PASSWORD,
+    },
+  });
   const navigation =
     useNavigation<StackNavigationProp<AuthenticationRouteParamList>>();
   const { mutate, ...signInMutation } = useSignInMutation();
