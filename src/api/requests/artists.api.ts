@@ -1,16 +1,28 @@
 import { API_URL } from "@env";
-import { getAxiosInterceptor } from "../getAxiosInterceptor";
+import { AxiosInterceptor } from "../AxiosInteceptor";
+import { Album } from "./albums.api";
 
 const artistsUrl = `${API_URL}/artists`;
 
-export const getArtistRequest = async (id: string) => {
-  const axios = await getAxiosInterceptor();
+export interface Artist {
+  albums: Album[];
+  createdAt: Date;
+  id: number;
+  image: string;
+  language: string;
+  name: string;
+  updatedAt: Date;
+  genres: any[];
+}
 
-  return (await axios.get(`${artistsUrl}/${id}`)).data;
+export const getArtistRequest = async (id: string) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (await axios.get<Artist>(`${artistsUrl}/${id}`)).data;
 };
 
 export const getArtistsRequest = async () => {
-  const axios = await getAxiosInterceptor();
+  const axios = AxiosInterceptor.Instance;
 
   return (await axios.get(artistsUrl)).data;
 };
