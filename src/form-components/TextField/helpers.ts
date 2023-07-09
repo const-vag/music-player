@@ -1,7 +1,7 @@
-import { TextFieldProps } from "./types";
+import { TextFieldProps } from './types';
 
-type SizeVariant = TextFieldProps["sizeVariant"];
+type SizeVariant = TextFieldProps['sizeVariant'];
 export const getMinWidth = (sizeVariant: SizeVariant) => {
-  if (sizeVariant === "half-size") return "50%";
-  return "100%";
+  if (sizeVariant === 'half-size') return '50%';
+  return '100%';
 };

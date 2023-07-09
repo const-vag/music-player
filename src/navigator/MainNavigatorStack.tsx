@@ -1,11 +1,11 @@
-import React from "react";
-import { BottomTabParamList, BottomTabRoutes } from "./types";
-import { Player } from "../screens/player/Player";
+import React from 'react';
+import { BottomTabParamList, BottomTabRoutes } from './types';
+import { Player } from '../screens/player/Player';
 import {
   TransitionPresets,
   createStackNavigator,
-} from "@react-navigation/stack";
-import { BottomTabNavigator } from "./BottomTabNavigator";
+} from '@react-navigation/stack';
+import { BottomTabNavigator } from './BottomTabNavigator';
 
 const Stack = createStackNavigator<BottomTabParamList>();
 export const MainNavigatorStack = () => {

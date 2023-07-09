@@ -1,9 +1,7 @@
-import {
-  useNavigation
-} from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { ContentRoutes } from "../content/types";
-import { SearchRoutes, SearchStackParamList } from "./types";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ContentRoutes } from '../content/types';
+import { SearchRoutes, SearchStackParamList } from './types';
 
 export const useSearchContent = () => {
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
@@ -16,7 +14,7 @@ export const useSearchContent = () => {
     navigation.navigate(SearchRoutes.CONTENT, {
       screen: ContentRoutes.ARTIST,
       params: {
-        id: "1",
+        id: '1',
       },
     });
   };

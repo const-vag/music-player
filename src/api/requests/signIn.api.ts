@@ -1,6 +1,6 @@
-import { API_URL } from "@env";
-import axios from "axios";
-import { SignInFormValues } from "../../screens/authentication/sign-in/types";
+import { API_URL } from '@env';
+import axios from 'axios';
+import { SignInFormValues } from '../../screens/authentication/sign-in/types';
 
 const signInUrl = `${API_URL}/auth/signin`;
 

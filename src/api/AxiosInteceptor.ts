@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from "axios";
-import { AUTH_TOKEN_KEY } from "../shared/hooks/useAuthToken";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios, { AxiosInstance } from 'axios';
+import { AUTH_TOKEN_KEY } from '../shared/hooks/useAuthToken';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class AxiosInterceptor {
   private axiosInstance: AxiosInstance;
@@ -29,11 +29,11 @@ export class AxiosInterceptor {
     return this._instance || (this._instance = new this());
   }
 
-  get<T>(...params: Parameters<AxiosInstance["get"]>) {
+  get<T>(...params: Parameters<AxiosInstance['get']>) {
     return this.axiosInstance.get<T>(...params);
   }
 
-  post<T>(...params: Parameters<AxiosInstance["post"]>) {
+  post<T>(...params: Parameters<AxiosInstance['post']>) {
     return this.axiosInstance.post<T>(...params);
   }
 }

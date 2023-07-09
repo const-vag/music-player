@@ -1,26 +1,26 @@
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import React, { ComponentProps } from "react";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { BottomTabParamList, BottomTabRoutes } from "./types";
-import { AnimatedFAB, BottomNavigation } from "react-native-paper";
-import { Home } from "../screens/home/Home";
-import { More } from "../screens/more/More";
-import { SearchStack } from "../screens/search/SearchStack";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import React, { ComponentProps } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { BottomTabParamList, BottomTabRoutes } from './types';
+import { AnimatedFAB, BottomNavigation } from 'react-native-paper';
+import { Home } from '../screens/home/Home';
+import { More } from '../screens/more/More';
+import { SearchStack } from '../screens/search/SearchStack';
 
 type BaseRoute = ComponentProps<
   typeof BottomNavigation
->["navigationState"]["routes"][number];
+>['navigationState']['routes'][number];
 
 const routes: BaseRoute[] = [
   {
     key: BottomTabRoutes.HOME,
-    title: "Home",
-    focusedIcon: "home",
-    unfocusedIcon: "home-outline",
+    title: 'Home',
+    focusedIcon: 'home',
+    unfocusedIcon: 'home-outline',
   },
-  { key: BottomTabRoutes.SEARCH, title: "Search", focusedIcon: "magnify" },
-  { key: BottomTabRoutes.MORE, title: "More", focusedIcon: "dots-horizontal" },
+  { key: BottomTabRoutes.SEARCH, title: 'Search', focusedIcon: 'magnify' },
+  { key: BottomTabRoutes.MORE, title: 'More', focusedIcon: 'dots-horizontal' },
 ];
 
 export const BottomTabNavigator = () => {
@@ -42,14 +42,14 @@ export const BottomTabNavigator = () => {
         renderScene={renderScene}
       />
       <AnimatedFAB
-        icon={"play"}
-        label={"SNIK, TRANNOS - GAMW TON LIGHT"}
+        icon={'play'}
+        label={'SNIK, TRANNOS - GAMW TON LIGHT'}
         extended
         onPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
         visible
-        animateFrom={"right"}
+        animateFrom={'right'}
         // iconMode={"static"}
-        style={{ alignSelf: "center", bottom: bottom + 85 }}
+        style={{ alignSelf: 'center', bottom: bottom + 85 }}
       />
     </>
   );

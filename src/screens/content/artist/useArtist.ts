@@ -1,7 +1,7 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
-import { ContentParamList, ContentRoutes } from "../types";
-import { useArtistQuery } from "../../../api/hooks/artists.query";
-import { Album, Type } from "../../../api/requests/albums.api";
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { ContentParamList, ContentRoutes } from '../types';
+import { useArtistQuery } from '../../../api/hooks/artists.query';
+import { Album, Type } from '../../../api/requests/albums.api';
 
 type ArtistRouteProp = RouteProp<ContentParamList, ContentRoutes.ARTIST>;
 
@@ -21,8 +21,8 @@ export const useArtist = () => {
       { singles: [], albums: [] }
     );
     return [
-      { title: "Albums", data: seperatedData.albums },
-      { title: "Singles", data: seperatedData.singles },
+      { title: 'Albums', data: seperatedData.albums },
+      { title: 'Singles', data: seperatedData.singles },
     ];
   };
 

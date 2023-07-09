@@ -1,10 +1,10 @@
 import {
   TransitionPresets,
   createStackNavigator,
-} from "@react-navigation/stack";
-import { SearchRoutes, SearchStackParamList } from "./types";
-import { SearchMain } from "./SearchMain";
-import { ContentStack } from "../content/ContentStack";
+} from '@react-navigation/stack';
+import { SearchRoutes, SearchStackParamList } from './types';
+import { SearchMain } from './SearchMain';
+import { ContentStack } from '../content/ContentStack';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 

@@ -1,10 +1,10 @@
-import React from "react";
-import { Controller, FieldValues } from "react-hook-form";
-import { TextInput, useTheme } from "react-native-paper";
-import { Box } from "../../ui-kit/Box/Box";
-import { Typography } from "../../ui-kit/Typography";
-import { TextFieldProps } from "./types";
-import { getMinWidth } from "./helpers";
+import React from 'react';
+import { Controller, FieldValues } from 'react-hook-form';
+import { TextInput, useTheme } from 'react-native-paper';
+import { Box } from '../../ui-kit/Box/Box';
+import { Typography } from '../../ui-kit/Typography';
+import { TextFieldProps } from './types';
+import { getMinWidth } from './helpers';
 
 export const TextField = <TFormValues extends FieldValues>(
   props: TextFieldProps<TFormValues>
@@ -14,7 +14,7 @@ export const TextField = <TFormValues extends FieldValues>(
     control,
     name,
     rules,
-    sizeVariant = "half-size",
+    sizeVariant = 'half-size',
     ...textInputProps
   } = props;
 

@@ -1,11 +1,11 @@
 import {
   TransitionPresets,
   createStackNavigator,
-} from "@react-navigation/stack";
-import React from "react";
-import { AuthenticationRouteParamList, AuthenticationRoutes } from "./types";
-import { SignIn } from "./sign-in/SignIn";
-import { SignUp } from "./sign-up/SignUp";
+} from '@react-navigation/stack';
+import React from 'react';
+import { AuthenticationRouteParamList, AuthenticationRoutes } from './types';
+import { SignIn } from './sign-in/SignIn';
+import { SignUp } from './sign-up/SignUp';
 
 const Stack = createStackNavigator<AuthenticationRouteParamList>();
 
