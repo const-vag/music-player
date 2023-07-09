@@ -1,6 +1,6 @@
 export enum Type {
-  Album = "ALBUM",
-  Single = "SINGLE",
+  Album = 'ALBUM',
+  Single = 'SINGLE',
 }
 
 export interface Album {

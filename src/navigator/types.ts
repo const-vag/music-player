@@ -1,13 +1,13 @@
 export enum AppNavigatorRoutes {
-  AUTHENTICATION = "Authentication",
-  MAIN = "Main",
+  AUTHENTICATION = 'Authentication',
+  MAIN = 'Main',
 }
 
 export enum BottomTabRoutes {
-  HOME = "Home",
-  SEARCH = "Search",
-  MORE = "More",
-  PLAYER = "Player",
+  HOME = 'Home',
+  SEARCH = 'Search',
+  MORE = 'More',
+  PLAYER = 'Player',
 }
 
 export type BottomTabParamList = {

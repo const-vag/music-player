@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import { Keyboard } from "react-native";
-import { useSignInMutation } from "../../../api/hooks/signIn.query";
-import { SignInFormValues } from "./types";
-import { useNavigation } from "@react-navigation/native";
-import { AuthenticationRouteParamList, AuthenticationRoutes } from "../types";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { DEFAULT_EMAIL, DEFAULT_PASSWORD } from "@env";
+import { useForm } from 'react-hook-form';
+import { Keyboard } from 'react-native';
+import { useSignInMutation } from '../../../api/hooks/signIn.query';
+import { SignInFormValues } from './types';
+import { useNavigation } from '@react-navigation/native';
+import { AuthenticationRouteParamList, AuthenticationRoutes } from '../types';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { DEFAULT_EMAIL, DEFAULT_PASSWORD } from '@env';
 
 export const useSignIn = () => {
   const form = useForm<SignInFormValues>({

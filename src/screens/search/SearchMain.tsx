@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "react-native-paper";
-import { Container } from "../../ui-kit/Container";
-import { useSearchContent } from "./useSearchContent";
+import React from 'react';
+import { Button } from 'react-native-paper';
+import { Container } from '../../ui-kit/Container';
+import { useSearchContent } from './useSearchContent';
 
 export const SearchMain = () => {
   const { goToHawkTsibouki } = useSearchContent();

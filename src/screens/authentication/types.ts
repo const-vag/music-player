@@ -1,6 +1,6 @@
 export enum AuthenticationRoutes {
-  SIGNIN = "Sign in",
-  SIGNUP = "Sign up",
+  SIGNIN = 'Sign in',
+  SIGNUP = 'Sign up',
 }
 
 export type AuthenticationRouteParamList = {

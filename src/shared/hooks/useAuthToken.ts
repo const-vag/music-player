@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useQuery } from '@tanstack/react-query';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const AUTH_TOKEN_KEY = "auth-token";
+export const AUTH_TOKEN_KEY = 'auth-token';
 
 export const useAuthToken = () => {
   const { data } = useQuery<string | null>(

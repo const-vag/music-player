@@ -1,14 +1,14 @@
-import React from "react";
-import { Image, SectionList, SectionListRenderItemInfo } from "react-native";
-import { ActivityIndicator } from "react-native-paper";
-import { Album } from "../../../api/requests/albums.api";
-import { Box } from "../../../ui-kit/Box/Box";
-import { Container } from "../../../ui-kit/Container";
-import { Spacer } from "../../../ui-kit/Spacer";
-import { Typography } from "../../../ui-kit/Typography";
-import { uiVariables } from "../../../ui-kit/variables";
-import { AlbumCard } from "./components/AlbumCard";
-import { useArtist } from "./useArtist";
+import React from 'react';
+import { Image, SectionList, SectionListRenderItemInfo } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
+import { Album } from '../../../api/requests/albums.api';
+import { Box } from '../../../ui-kit/Box/Box';
+import { Container } from '../../../ui-kit/Container';
+import { Spacer } from '../../../ui-kit/Spacer';
+import { Typography } from '../../../ui-kit/Typography';
+import { uiVariables } from '../../../ui-kit/variables';
+import { AlbumCard } from './components/AlbumCard';
+import { useArtist } from './useArtist';
 
 export const Artist = () => {
   const { artistQuery, seperateAlbumsAndSingles } = useArtist();
@@ -52,10 +52,10 @@ export const Artist = () => {
             <Typography
               variant="displayMedium"
               style={{
-                position: "absolute",
+                position: 'absolute',
                 bottom: 0,
                 left: uiVariables.spacer.horizontalPadding,
-                fontWeight: "bold",
+                fontWeight: 'bold',
               }}
             >
               {artist.name}

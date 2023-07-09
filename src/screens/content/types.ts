@@ -1,6 +1,6 @@
 export enum ContentRoutes {
-  ARTIST = "Artist",
-  ALBUM = "Album",
+  ARTIST = 'Artist',
+  ALBUM = 'Album',
 }
 
 export type ContentParamList = {

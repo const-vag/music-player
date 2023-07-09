@@ -1,6 +1,6 @@
-import React, { ComponentProps } from "react";
-import { useTheme } from "react-native-paper";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { ComponentProps } from 'react';
+import { useTheme } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 /**
  * @param name https://pictogrammers.com/library/mdi/
  */

@@ -1,10 +1,10 @@
-import React from "react";
-import { useSignIn } from "./useSignIn";
-import { Button } from "react-native-paper";
-import { Typography } from "../../../ui-kit/Typography";
-import { Container } from "../../../ui-kit/Container";
-import { Spacer } from "../../../ui-kit/Spacer";
-import { TextField } from "../../../form-components/TextField/TextField";
+import React from 'react';
+import { useSignIn } from './useSignIn';
+import { Button } from 'react-native-paper';
+import { Typography } from '../../../ui-kit/Typography';
+import { Container } from '../../../ui-kit/Container';
+import { Spacer } from '../../../ui-kit/Spacer';
+import { TextField } from '../../../form-components/TextField/TextField';
 
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
@@ -17,10 +17,10 @@ export const SignIn = () => {
       <Spacer />
       <TextField
         rules={{
-          required: "Email is required",
+          required: 'Email is required',
           pattern: {
             value: EMAIL_REGEX,
-            message: "Please enter a valid email!",
+            message: 'Please enter a valid email!',
           },
         }}
         placeholder="Email"
@@ -29,7 +29,7 @@ export const SignIn = () => {
       />
       <Spacer />
       <TextField
-        rules={{ required: "Password is required" }}
+        rules={{ required: 'Password is required' }}
         placeholder="Password"
         name="password"
         secureTextEntry

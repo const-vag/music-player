@@ -1,10 +1,10 @@
 import {
   TransitionPresets,
   createStackNavigator,
-} from "@react-navigation/stack";
-import { ContentParamList, ContentRoutes } from "./types";
-import { Artist } from "./artist/Artist";
-import { Album } from "./album/Album";
+} from '@react-navigation/stack';
+import { ContentParamList, ContentRoutes } from './types';
+import { Artist } from './artist/Artist';
+import { Album } from './album/Album';
 
 const Stack = createStackNavigator<ContentParamList>();
 

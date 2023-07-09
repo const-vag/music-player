@@ -1,11 +1,11 @@
-import { StyleSheet, View } from "react-native";
-import { useTheme } from "react-native-paper";
-import { BoxProps } from "./types";
+import { StyleSheet, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
+import { BoxProps } from './types';
 
 export const Box = (props: BoxProps) => {
   const theme = useTheme();
 
-  const { direction = "column" } = props;
+  const { direction = 'column' } = props;
 
   return (
     <View
@@ -38,7 +38,7 @@ export const Box = (props: BoxProps) => {
 
 const styles = StyleSheet.create({
   box: {
-    alignItems: "center",
+    alignItems: 'center',
   },
 });
 export { BoxProps };

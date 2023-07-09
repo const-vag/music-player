@@ -1,9 +1,9 @@
-import React, { memo } from "react";
-import { Box } from "../../../../ui-kit/Box/Box";
-import { Album } from "../../../../api/requests/albums.api";
-import { Image } from "react-native";
-import { Typography } from "../../../../ui-kit/Typography";
-import { uiVariables } from "../../../../ui-kit/variables";
+import React, { memo } from 'react';
+import { Box } from '../../../../ui-kit/Box/Box';
+import { Album } from '../../../../api/requests/albums.api';
+import { Image } from 'react-native';
+import { Typography } from '../../../../ui-kit/Typography';
+import { uiVariables } from '../../../../ui-kit/variables';
 
 type AlbumCardProps = {
   album: Album;
@@ -18,7 +18,7 @@ const AlbumCardComponent = ({ album }: AlbumCardProps) => {
         style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
         source={{ uri: album.image }}
       />
-      <Box ml={10} style={{ alignItems: "flex-start" }}>
+      <Box ml={10} style={{ alignItems: 'flex-start' }}>
         <Typography variant="titleMedium">{album.name}</Typography>
         <Typography variant="bodySmall">
           {new Date(album.releaseDate).getFullYear()}
@@ -28,4 +28,4 @@ const AlbumCardComponent = ({ album }: AlbumCardProps) => {
   );
 };
 
-export const AlbumCard = memo(AlbumCardComponent)
+export const AlbumCard = memo(AlbumCardComponent);
