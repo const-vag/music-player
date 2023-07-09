@@ -14,12 +14,22 @@ export const useSearchContent = () => {
     navigation.navigate(SearchRoutes.CONTENT, {
       screen: ContentRoutes.ARTIST,
       params: {
-        id: '1',
+        id: '2',
+      },
+    });
+  };
+
+  const goToAlbum = (id: string) => {
+    navigation.navigate(SearchRoutes.CONTENT, {
+      screen: ContentRoutes.ALBUM,
+      params: {
+        id,
       },
     });
   };
 
   return {
     goToHawkTsibouki,
+    goToAlbum,
   };
 };

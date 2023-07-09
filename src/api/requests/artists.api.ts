@@ -15,6 +15,11 @@ export interface Artist {
   genres: any[];
 }
 
+export interface ArtistSimple {
+  id: string;
+  name: string;
+}
+
 export const getArtistRequest = async (id: string) => {
   const axios = AxiosInterceptor.Instance;
 
