@@ -1,5 +1,5 @@
 import { API_URL } from '@env';
-import { AxiosInterceptor } from '../AxiosInteceptor';
+import { AxiosInterceptor } from '../AxiosInterceptor';
 import { Album } from './albums.api';
 
 const artistsUrl = `${API_URL}/artists`;
