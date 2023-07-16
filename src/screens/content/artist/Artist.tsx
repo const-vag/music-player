@@ -62,7 +62,6 @@ export const Artist = () => {
             </Typography>
           </Box>
         }
-        data={artist.albums}
         ItemSeparatorComponent={() => <Spacer size={10} />}
         renderItem={({ item }) => (
           <AlbumCard onPress={() => goToAlbum(item.id)} album={item} />
@@ -74,4 +73,4 @@ export const Artist = () => {
   );
 };
 
-const keyExtractor = (album: Album) => album.id;
+const keyExtractor = (album: Album) => `${album.id}`;
