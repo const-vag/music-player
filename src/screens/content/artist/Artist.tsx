@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, SectionList, SectionListRenderItemInfo } from 'react-native';
-import { ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator, Button } from 'react-native-paper';
 import { Album } from '../../../api/requests/albums.api';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Container } from '../../../ui-kit/Container';
@@ -39,27 +39,39 @@ export const Artist = () => {
           </Typography>
         )}
         ListHeaderComponent={
-          <Box>
+          <Box expand>
             <Image
               style={{
-                width: 450,
+                width: '100%',
                 height: 350,
               }}
               source={{
                 uri: artist.image,
               }}
             />
-            <Typography
-              variant="displayMedium"
+            <Box
+              ph={uiVariables.spacer.horizontalPadding}
+              direction="row"
               style={{
+                justifyContent: 'space-between',
+                backgroundColor: 'transparent',
+                width: '100%',
                 position: 'absolute',
                 bottom: 0,
-                left: uiVariables.spacer.horizontalPadding,
-                fontWeight: 'bold',
               }}
             >
-              {artist.name}
-            </Typography>
+              <Typography
+                variant="displayMedium"
+                style={{
+                  fontWeight: 'bold',
+                }}
+              >
+                {artist.name}
+              </Typography>
+              <Button uppercase mode="contained" icon="plus-circle-outline">
+                Follow
+              </Button>
+            </Box>
           </Box>
         }
         ItemSeparatorComponent={() => <Spacer size={10} />}
