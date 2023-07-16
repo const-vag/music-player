@@ -5,7 +5,7 @@ import { BoxProps } from './types';
 export const Box = (props: BoxProps) => {
   const theme = useTheme();
 
-  const { direction = 'column' } = props;
+  const { direction = 'column', expand = false } = props;
 
   return (
     <View
@@ -29,7 +29,7 @@ export const Box = (props: BoxProps) => {
           paddingHorizontal: props.ph,
           paddingVertical: props.pv,
         },
-        styles.box,
+        expand ? styles.boxExpanded : styles.box,
         props.style,
       ]}
     />
@@ -39,6 +39,10 @@ export const Box = (props: BoxProps) => {
 const styles = StyleSheet.create({
   box: {
     alignItems: 'center',
+  },
+  boxExpanded: {
+    alignItems: 'stretch',
+    minWidth: '100%',
   },
 });
 export { BoxProps };

@@ -62,4 +62,5 @@ export type BoxProps = ViewProps & {
    * @name paddingVertical
    */
   pv?: FlexStyle['paddingVertical'];
+  expand?: boolean;
 };
