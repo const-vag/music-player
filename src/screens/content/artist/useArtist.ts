@@ -13,7 +13,7 @@ export const useArtist = () => {
 
   const artistQuery = useArtistQuery(params.id);
 
-  const goToAlbum = (id: string) => {
+  const goToAlbum = (id: number) => {
     navigation.navigate(SearchRoutes.CONTENT, {
       screen: ContentRoutes.ALBUM,
       params: {

@@ -5,9 +5,9 @@ export enum ContentRoutes {
 
 export type ContentParamList = {
   [ContentRoutes.ARTIST]: {
-    id: string;
+    id: number;
   };
   [ContentRoutes.ALBUM]: {
-    id: string;
+    id: number;
   };
 };

@@ -7,7 +7,7 @@ const artistsUrl = `${API_URL}/artists`;
 export interface Artist {
   albums: Album[];
   createdAt: Date;
-  id: string;
+  id: number;
   image: string;
   language: string;
   name: string;
@@ -16,11 +16,11 @@ export interface Artist {
 }
 
 export interface ArtistSimple {
-  id: string;
+  id: number;
   name: string;
 }
 
-export const getArtistRequest = async (id: string) => {
+export const getArtistRequest = async (id: number) => {
   const axios = AxiosInterceptor.Instance;
 
   return (await axios.get<Artist>(`${artistsUrl}/${id}`)).data;

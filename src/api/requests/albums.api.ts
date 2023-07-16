@@ -12,7 +12,7 @@ export enum Type {
 
 export interface Album {
   createdAt: Date;
-  id: string;
+  id: number;
   image: string;
   name: string;
   releaseDate: Date;
@@ -22,7 +22,7 @@ export interface Album {
   songs: Song[];
 }
 
-export const getAlbumRequest = async (id: string) => {
+export const getAlbumRequest = async (id: number) => {
   const axios = AxiosInterceptor.Instance;
 
   return (await axios.get<Album>(`${albumsUrl}/${id}`)).data;
