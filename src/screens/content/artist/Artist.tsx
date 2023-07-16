@@ -11,7 +11,7 @@ import { AlbumCard } from './components/AlbumCard';
 import { useArtist } from './useArtist';
 
 export const Artist = () => {
-  const { artistQuery, seperateAlbumsAndSingles } = useArtist();
+  const { artistQuery, separateAlbumsAndSingles } = useArtist();
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)
     return (
@@ -21,12 +21,12 @@ export const Artist = () => {
     );
 
   const artist = artistQuery.data;
-  const seperatedData = seperateAlbumsAndSingles(artist.albums);
+  const separatedData = separateAlbumsAndSingles(artist.albums);
 
   return (
     <Container ph={0}>
       <SectionList
-        sections={seperatedData}
+        sections={separatedData}
         renderSectionHeader={({ section: { title } }) => (
           <Typography
             style={{

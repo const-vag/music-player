@@ -10,8 +10,8 @@ export const useArtist = () => {
 
   const artistQuery = useArtistQuery(params.id);
 
-  const seperateAlbumsAndSingles = (albums: Album[]) => {
-    const seperatedData = albums.reduce(
+  const separateAlbumsAndSingles = (albums: Album[]) => {
+    const separatedData = albums.reduce(
       (acc: { singles: Album[]; albums: Album[] }, album) => {
         if (album.type === Type.Album) {
           return { ...acc, albums: [...acc.albums, album] };
@@ -21,10 +21,10 @@ export const useArtist = () => {
       { singles: [], albums: [] }
     );
     return [
-      { title: 'Albums', data: seperatedData.albums },
-      { title: 'Singles', data: seperatedData.singles },
+      { title: 'Albums', data: separatedData.albums },
+      { title: 'Singles', data: separatedData.singles },
     ];
   };
 
-  return { artistQuery, seperateAlbumsAndSingles };
+  return { artistQuery, separateAlbumsAndSingles };
 };
