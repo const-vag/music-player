@@ -1,8 +1,9 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Box, BoxProps } from './Box/Box';
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
+import { Box, BoxProps } from './Box/Box';
+import { Spacer } from './Spacer';
 import { uiVariables } from './variables';
 
 type ContainerProps = BoxProps & {
@@ -11,8 +12,10 @@ type ContainerProps = BoxProps & {
 
 export const Container = (props: ContainerProps) => {
   const { children, onClose } = props;
+
   return (
     <Box style={{ flex: 1 }}>
+      <StatusBar style="light" />
       {onClose && (
         <Box direction="row" style={{ alignSelf: 'flex-start' }}>
           <IconButton onPress={onClose} icon="chevron-down" size={34} />
@@ -27,8 +30,8 @@ export const Container = (props: ContainerProps) => {
         }
         style={styles.container}
       >
-        <StatusBar style="auto" />
         {children}
+        <Spacer size={70} />
       </Box>
     </Box>
   );
