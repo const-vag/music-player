@@ -3,7 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { ContentRoutes } from '../content/types';
 import { SearchRoutes, SearchStackParamList } from './types';
 
-export const useSearchContent = () => {
+export const useSearchMain = () => {
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 
   const goToHawkTsibouki = () => {
@@ -19,17 +19,7 @@ export const useSearchContent = () => {
     });
   };
 
-  const goToAlbum = (id: string) => {
-    navigation.navigate(SearchRoutes.CONTENT, {
-      screen: ContentRoutes.ALBUM,
-      params: {
-        id,
-      },
-    });
-  };
-
   return {
     goToHawkTsibouki,
-    goToAlbum,
   };
 };
