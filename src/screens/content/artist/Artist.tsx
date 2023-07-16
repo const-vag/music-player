@@ -11,7 +11,7 @@ import { AlbumCard } from './components/AlbumCard';
 import { useArtist } from './useArtist';
 
 export const Artist = () => {
-  const { artistQuery, separateAlbumsAndSingles } = useArtist();
+  const { artistQuery, separateAlbumsAndSingles, goToAlbum } = useArtist();
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)
     return (
@@ -64,23 +64,14 @@ export const Artist = () => {
         }
         data={artist.albums}
         ItemSeparatorComponent={() => <Spacer size={10} />}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <AlbumCard onPress={() => goToAlbum(item.id)} album={item} />
+        )}
         keyExtractor={keyExtractor}
-        ListFooterComponent={<Spacer size={70} />}
         removeClippedSubviews
       />
     </Container>
   );
 };
-
-const renderItem = ({
-  item,
-}: SectionListRenderItemInfo<
-  Album,
-  {
-    title: string;
-    data: Album[];
-  }
->) => <AlbumCard album={item} />;
 
 const keyExtractor = (album: Album) => album.id;

@@ -1,14 +1,26 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ContentParamList, ContentRoutes } from '../types';
 import { useArtistQuery } from '../../../api/hooks/artists.query';
 import { Album, Type } from '../../../api/requests/albums.api';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SearchRoutes, SearchStackParamList } from '../../search/types';
 
 type ArtistRouteProp = RouteProp<ContentParamList, ContentRoutes.ARTIST>;
 
 export const useArtist = () => {
   const { params } = useRoute<ArtistRouteProp>();
+  const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 
   const artistQuery = useArtistQuery(params.id);
+
+  const goToAlbum = (id: string) => {
+    navigation.navigate(SearchRoutes.CONTENT, {
+      screen: ContentRoutes.ALBUM,
+      params: {
+        id,
+      },
+    });
+  };
 
   const separateAlbumsAndSingles = (albums: Album[]) => {
     const separatedData = albums.reduce(
@@ -26,5 +38,5 @@ export const useArtist = () => {
     ];
   };
 
-  return { artistQuery, separateAlbumsAndSingles };
+  return { artistQuery, separateAlbumsAndSingles, goToAlbum };
 };

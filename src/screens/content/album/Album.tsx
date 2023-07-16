@@ -1,17 +1,15 @@
 import React from 'react';
+import {
+  FlatList,
+  Image,
+  ListRenderItemInfo
+} from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
+import { Song } from '../../../api/requests/songs.api';
 import { Container } from '../../../ui-kit/Container';
 import { Typography } from '../../../ui-kit/Typography';
-import { useAlbum } from './useAlbum';
-import { ActivityIndicator } from 'react-native-paper';
-import {
-  Image,
-  FlatList,
-  ListRenderItem,
-  ListRenderItemInfo,
-} from 'react-native';
-import { Box } from '../../../ui-kit/Box/Box';
-import { Song } from '../../../api/requests/songs.api';
 import { SongCard } from './components/SongCard';
+import { useAlbum } from './useAlbum';
 
 const IMAGE_SIZE = 200;
 
