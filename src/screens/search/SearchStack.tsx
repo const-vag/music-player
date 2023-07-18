@@ -2,9 +2,10 @@ import {
   TransitionPresets,
   createStackNavigator,
 } from '@react-navigation/stack';
-import { SearchRoutes, SearchStackParamList } from './types';
-import { SearchMain } from './SearchMain';
+import React from 'react';
 import { ContentStack } from '../content/ContentStack';
+import { SearchMain } from './SearchMain';
+import { SearchRoutes, SearchStackParamList } from './types';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 
@@ -13,7 +14,6 @@ export const SearchStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         options={{
-          ...TransitionPresets.ModalPresentationIOS,
           headerShown: false,
           gestureEnabled: true,
         }}
