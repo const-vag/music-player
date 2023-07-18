@@ -63,4 +63,8 @@ export type BoxProps = ViewProps & {
    */
   pv?: FlexStyle['paddingVertical'];
   expand?: boolean;
+  /**
+   * Sets the background color to 'transparent'
+   */
+  transparent?: boolean;
 };

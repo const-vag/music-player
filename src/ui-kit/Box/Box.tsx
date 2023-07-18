@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { BoxProps } from './types';
@@ -5,14 +6,16 @@ import { BoxProps } from './types';
 export const Box = (props: BoxProps) => {
   const theme = useTheme();
 
-  const { direction = 'column', expand = false } = props;
+  const { direction = 'column', expand = false, transparent = false } = props;
 
   return (
     <View
       {...props}
       style={[
         {
-          backgroundColor: theme.colors.background,
+          backgroundColor: transparent
+            ? 'transparent'
+            : theme.colors.background,
           flexDirection: direction,
           margin: props.m,
           marginBottom: props.mb,
