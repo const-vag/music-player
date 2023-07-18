@@ -5,11 +5,18 @@ import { Container } from '../../ui-kit/Container';
 import { Image } from 'react-native';
 import { usePlayer } from './usePlayer';
 import { Spacer } from '../../ui-kit/Spacer';
-import { usePlayerController } from '../../shared/usePlayerStore';
+import { usePlayerControls } from '../../shared/usePlayerControls';
+import { usePlayerStore } from '../../shared/usePlayerStore';
 
 export const Player = () => {
   const { navigation } = usePlayer();
-  const { song, isPlaying, play, pause } = usePlayerController();
+  const { play, pause } = usePlayerControls();
+  const { song, isPlaying } = usePlayerStore();
+
+  if (!song) {
+    navigation.goBack();
+    return;
+  }
 
   return (
     <Container onClose={navigation.goBack}>
@@ -42,7 +49,7 @@ export const Player = () => {
         />
       </Box>
       <Box style={{ justifyContent: 'space-between' }} direction="row">
-        <Text variant="titleMedium">{song.name}</Text>
+        <Text variant="titleMedium">{song?.name}</Text>
         <IconButton
           icon="heart"
           onPress={() => console.log('favourite song snikaros mono')}
