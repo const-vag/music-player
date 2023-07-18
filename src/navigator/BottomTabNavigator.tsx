@@ -1,13 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import React, { ComponentProps } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BottomTabParamList, BottomTabRoutes } from './types';
-import { AnimatedFAB, BottomNavigation } from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
 import { Home } from '../screens/home/Home';
 import { More } from '../screens/more/More';
 import { SearchStack } from '../screens/search/SearchStack';
-import { usePlayerController } from '../shared/usePlayerStore';
+import { MiniPlayer } from './MiniPlayer';
+import { BottomTabRoutes } from './types';
 
 type BaseRoute = ComponentProps<
   typeof BottomNavigation
@@ -26,16 +23,12 @@ const routes: BaseRoute[] = [
 
 export const BottomTabNavigator = () => {
   const [index, setIndex] = React.useState(0);
-  const { bottom } = useSafeAreaInsets();
-  const navigation = useNavigation<StackNavigationProp<BottomTabParamList>>();
 
   const renderScene = BottomNavigation.SceneMap({
     [BottomTabRoutes.HOME]: Home,
     [BottomTabRoutes.SEARCH]: SearchStack,
     [BottomTabRoutes.MORE]: More,
   });
-
-  const { song } = usePlayerController();
 
   return (
     <>
@@ -44,15 +37,7 @@ export const BottomTabNavigator = () => {
         onIndexChange={setIndex}
         renderScene={renderScene}
       />
-      <AnimatedFAB
-        icon={'play'}
-        label={song.name || ''}
-        extended
-        onPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
-        visible
-        animateFrom={'right'}
-        style={{ alignSelf: 'center', bottom: bottom + 85 }}
-      />
+      <MiniPlayer />
     </>
   );
 };
