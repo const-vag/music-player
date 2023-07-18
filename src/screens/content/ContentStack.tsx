@@ -2,9 +2,10 @@ import {
   TransitionPresets,
   createStackNavigator,
 } from '@react-navigation/stack';
-import { ContentParamList, ContentRoutes } from './types';
-import { Artist } from './artist/Artist';
+import React from 'react';
 import { Album } from './album/Album';
+import { Artist } from './artist/Artist';
+import { ContentParamList, ContentRoutes } from './types';
 
 const Stack = createStackNavigator<ContentParamList>();
 
@@ -13,7 +14,7 @@ export const ContentStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         options={{
-          ...TransitionPresets.DefaultTransition,
+          ...TransitionPresets.SlideFromRightIOS,
           headerShown: false,
           gestureEnabled: true,
         }}
@@ -22,7 +23,7 @@ export const ContentStack = () => {
       />
       <Stack.Screen
         options={{
-          ...TransitionPresets.DefaultTransition,
+          ...TransitionPresets.SlideFromRightIOS,
           headerShown: false,
           gestureEnabled: true,
         }}
