@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, SectionList, SectionListRenderItemInfo } from 'react-native';
-import { ActivityIndicator, Button } from 'react-native-paper';
+import { ImageBackground, SectionList, View } from 'react-native';
+import { ActivityIndicator, Button, useTheme } from 'react-native-paper';
 import { Album } from '../../../api/requests/albums.api';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Container } from '../../../ui-kit/Container';
@@ -12,6 +12,7 @@ import { useArtist } from './useArtist';
 
 export const Artist = () => {
   const { artistQuery, separateAlbumsAndSingles, goToAlbum } = useArtist();
+  const theme = useTheme();
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)
     return (
@@ -40,15 +41,18 @@ export const Artist = () => {
         )}
         ListHeaderComponent={
           <Box expand>
-            <Image
+            <ImageBackground
               style={{
+                flex: 1,
                 width: '100%',
                 height: 350,
               }}
               source={{
                 uri: artist.image,
               }}
-            />
+            >
+              <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' }} />
+            </ImageBackground>
             <Box
               ph={uiVariables.spacer.horizontalPadding}
               direction="row"
@@ -68,7 +72,12 @@ export const Artist = () => {
               >
                 {artist.name}
               </Typography>
-              <Button uppercase mode="contained" icon="plus-circle-outline">
+              <Button
+                textColor={theme.colors.onBackground}
+                uppercase
+                mode="outlined"
+                icon="plus-circle-outline"
+              >
                 Follow
               </Button>
             </Box>
