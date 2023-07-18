@@ -39,7 +39,7 @@ export const Album = () => {
         data={album.songs}
         keyExtractor={keyExtractor}
         renderItem={({ item }: ListRenderItemInfo<Song>) => (
-          <SongCard song={item} />
+          <SongCard song={item} albumImage={album.image} />
         )}
       />
     </Container>

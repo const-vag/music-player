@@ -5,15 +5,19 @@ import { Typography } from '../../../../ui-kit/Typography';
 import { TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { useSongCard } from './useSongCard';
+import { usePlayerController } from '../../../../shared/usePlayerStore';
 
 type SongCardProps = {
   song: Song;
+  albumImage: string;
 };
 
-const SongCardComponent = ({ song }: SongCardProps) => {
+const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
   const { likeSongMutation } = useSongCard();
+  const { updateAndPlaySong } = usePlayerController();
+
   return (
-    <TouchableOpacity onPress={() => console.log('Play song...')}>
+    <TouchableOpacity onPress={() => updateAndPlaySong({ ...song, albumImage })}>
       <Box expand>
         <Box
           style={{

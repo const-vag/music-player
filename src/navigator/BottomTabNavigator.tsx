@@ -7,6 +7,7 @@ import { AnimatedFAB, BottomNavigation } from 'react-native-paper';
 import { Home } from '../screens/home/Home';
 import { More } from '../screens/more/More';
 import { SearchStack } from '../screens/search/SearchStack';
+import { usePlayerController } from '../shared/usePlayerStore';
 
 type BaseRoute = ComponentProps<
   typeof BottomNavigation
@@ -34,6 +35,8 @@ export const BottomTabNavigator = () => {
     [BottomTabRoutes.MORE]: More,
   });
 
+  const { song } = usePlayerController();
+
   return (
     <>
       <BottomNavigation
@@ -43,12 +46,11 @@ export const BottomTabNavigator = () => {
       />
       <AnimatedFAB
         icon={'play'}
-        label={'SNIK, TRANNOS - GAMW TON LIGHT'}
+        label={song.name || ''}
         extended
         onPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
         visible
         animateFrom={'right'}
-        // iconMode={"static"}
         style={{ alignSelf: 'center', bottom: bottom + 85 }}
       />
     </>

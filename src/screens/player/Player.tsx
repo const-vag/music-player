@@ -5,9 +5,11 @@ import { Container } from '../../ui-kit/Container';
 import { Image } from 'react-native';
 import { usePlayer } from './usePlayer';
 import { Spacer } from '../../ui-kit/Spacer';
+import { usePlayerController } from '../../shared/usePlayerStore';
 
 export const Player = () => {
   const { navigation } = usePlayer();
+  const { song, isPlaying, play, pause } = usePlayerController();
 
   return (
     <Container onClose={navigation.goBack}>
@@ -17,7 +19,7 @@ export const Player = () => {
           height: 250,
         }}
         source={{
-          uri: 'https://storage.googleapis.com/pr-newsroom-wp/1/2022/02/SNIK1-1-1440x1440.png',
+          uri: song.albumImage,
         }}
       />
       <Box direction="row" mb={20}>
@@ -27,11 +29,11 @@ export const Player = () => {
           onPress={() => console.log('Pressed')}
         />
         <Spacer mode="horizontal" />
-        <IconButton
-          icon="play"
-          size={84}
-          onPress={() => console.log('Pressed')}
-        />
+        {isPlaying ? (
+          <IconButton icon={'pause'} size={84} onPress={pause} />
+        ) : (
+          <IconButton icon={'play'} size={84} onPress={() => play(song.link)} />
+        )}
         <Spacer mode="horizontal" />
         <IconButton
           icon="skip-next"
@@ -39,8 +41,8 @@ export const Player = () => {
           onPress={() => console.log('Pressed')}
         />
       </Box>
-      <Box direction="row">
-        <Text variant="titleMedium">Snik, Trannos - GAMW TON LIGHT</Text>
+      <Box style={{ justifyContent: 'space-between' }} direction="row">
+        <Text variant="titleMedium">{song.name}</Text>
         <IconButton
           icon="heart"
           onPress={() => console.log('favourite song snikaros mono')}
