@@ -3,7 +3,7 @@ import { Song } from '../../../../api/requests/songs.api';
 import { Box } from '../../../../ui-kit/Box/Box';
 import { Typography } from '../../../../ui-kit/Typography';
 import { TouchableOpacity } from 'react-native';
-import { IconButton, Snackbar } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 import { useSongCard } from './useSongCard';
 import React from 'react';
 import { usePlayerControls } from '../../../../shared/stores/player/usePlayerControls';
@@ -14,7 +14,7 @@ type SongCardProps = {
 };
 
 const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
-  const { likeSongMutation, hide, show } = useSongCard();
+  const { likeSongMutation, show } = useSongCard();
   const { updateAndPlaySong } = usePlayerControls();
 
   return (
