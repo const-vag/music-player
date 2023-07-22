@@ -14,7 +14,7 @@ export const useSearchMain = () => {
     navigation.navigate(SearchRoutes.CONTENT, {
       screen: ContentRoutes.ARTIST,
       params: {
-        id: 1,
+        id: 2,
       },
     });
   };

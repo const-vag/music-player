@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { Song } from '../api/requests/songs.api';
-import { MediaSound } from './MediaSound';
+
 import { useStore } from './PlayerStore';
-import { asyncStorage } from './hooks/useAsyncStorage';
+import { asyncStorage } from '../../hooks/useAsyncStorage';
+import { MediaSound } from '../../MediaSound';
+import { Song } from '../../../api/requests/songs.api';
 
 export const ASYNC_STORAGE_SONG_KEY = 'async-storage-latest-song';
 

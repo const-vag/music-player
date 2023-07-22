@@ -3,10 +3,10 @@ import { Song } from '../../../../api/requests/songs.api';
 import { Box } from '../../../../ui-kit/Box/Box';
 import { Typography } from '../../../../ui-kit/Typography';
 import { TouchableOpacity } from 'react-native';
-import { IconButton } from 'react-native-paper';
+import { IconButton, Snackbar } from 'react-native-paper';
 import { useSongCard } from './useSongCard';
 import React from 'react';
-import { usePlayerControls } from '../../../../shared/usePlayerControls';
+import { usePlayerControls } from '../../../../shared/stores/player/usePlayerControls';
 
 type SongCardProps = {
   song: Song;
@@ -14,12 +14,17 @@ type SongCardProps = {
 };
 
 const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
-  const { likeSongMutation } = useSongCard();
+  const { likeSongMutation, hide, show } = useSongCard();
   const { updateAndPlaySong } = usePlayerControls();
 
   return (
     <TouchableOpacity
-      onPress={() => updateAndPlaySong({ ...song, albumImage })}
+      onPress={
+        song.link
+          ? () => updateAndPlaySong({ ...song, albumImage })
+          : () =>
+              show("Song can't play right now, try again later.")
+      }
     >
       <Box expand>
         <Box

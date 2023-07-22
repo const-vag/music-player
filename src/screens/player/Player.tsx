@@ -5,8 +5,8 @@ import { Container } from '../../ui-kit/Container';
 import { Image } from 'react-native';
 import { usePlayer } from './usePlayer';
 import { Spacer } from '../../ui-kit/Spacer';
-import { usePlayerControls } from '../../shared/usePlayerControls';
-import { usePlayerStore } from '../../shared/usePlayerStore';
+import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
+import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';
 
 export const Player = () => {
   const { navigation } = usePlayer();

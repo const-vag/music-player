@@ -1,10 +1,12 @@
 import React, { ComponentProps } from 'react';
-import { BottomNavigation } from 'react-native-paper';
+import { BottomNavigation, Snackbar } from 'react-native-paper';
 import { Home } from '../screens/home/Home';
 import { More } from '../screens/more/More';
 import { SearchStack } from '../screens/search/SearchStack';
 import { MiniPlayer } from './MiniPlayer';
 import { BottomTabRoutes } from './types';
+import { useSnackbarStore } from '../shared/stores/snackbar/useSnackbarStore';
+import { useSnackbarControls } from '../shared/stores/snackbar/useSnackbarControls';
 
 type BaseRoute = ComponentProps<
   typeof BottomNavigation
@@ -22,6 +24,8 @@ const routes: BaseRoute[] = [
 ];
 
 export const BottomTabNavigator = () => {
+  const { isVisible, message } = useSnackbarStore();
+  const { hide } = useSnackbarControls();
   const [index, setIndex] = React.useState(0);
 
   const renderScene = BottomNavigation.SceneMap({
@@ -38,6 +42,15 @@ export const BottomTabNavigator = () => {
         renderScene={renderScene}
       />
       <MiniPlayer />
+      <Snackbar
+        visible={isVisible}
+        onDismiss={hide}
+        action={{
+          label: 'OK',
+        }}
+      >
+        {message}
+      </Snackbar>
     </>
   );
 };

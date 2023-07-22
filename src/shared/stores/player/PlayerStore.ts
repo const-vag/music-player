@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { Song } from '../api/requests/songs.api';
 import { equals } from 'ramda';
+import { Song } from '../../../api/requests/songs.api';
 
 type Action = {
   updateSong: (newSong: Song & { albumImage: string }) => void;

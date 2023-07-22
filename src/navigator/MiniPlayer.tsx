@@ -1,14 +1,14 @@
 import React from 'react';
 import { IconButton, useTheme } from 'react-native-paper';
 import { Box } from '../ui-kit/Box/Box';
-import { usePlayerStore } from '../shared/usePlayerStore';
-import { usePlayerControls } from '../shared/usePlayerControls';
+import { usePlayerStore } from '../shared/stores/player/usePlayerStore';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { BottomTabParamList, BottomTabRoutes } from './types';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableOpacity, Image } from 'react-native';
 import { Typography } from '../ui-kit/Typography';
+import { usePlayerControls } from '../shared/stores/player/usePlayerControls';
 
 const IMAGE_SIZE = 50;
 
