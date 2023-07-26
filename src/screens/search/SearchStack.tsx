@@ -6,6 +6,7 @@ import React from 'react';
 import { ContentStack } from '../content/ContentStack';
 import { SearchMain } from './SearchMain';
 import { SearchRoutes, SearchStackParamList } from './types';
+import SearchScreen from './SearchScreen';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 
@@ -19,6 +20,15 @@ export const SearchStack = () => {
         }}
         name={SearchRoutes.MAIN}
         component={SearchMain}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          gestureEnabled: true,
+          ...TransitionPresets.RevealFromBottomAndroid,
+        }}
+        name={SearchRoutes.SEARCH_SCREEN}
+        component={SearchScreen}
       />
       <Stack.Screen
         options={{

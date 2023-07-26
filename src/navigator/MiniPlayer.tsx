@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconButton, useTheme } from 'react-native-paper';
 import { Box } from '../ui-kit/Box/Box';
 import { usePlayerStore } from '../shared/stores/player/usePlayerStore';
@@ -8,6 +8,7 @@ import { BottomTabParamList, BottomTabRoutes } from './types';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableOpacity, Image } from 'react-native';
 import { Typography } from '../ui-kit/Typography';
+import { Keyboard } from 'react-native';
 import { usePlayerControls } from '../shared/stores/player/usePlayerControls';
 
 const IMAGE_SIZE = 50;
@@ -20,7 +21,25 @@ export const MiniPlayer = () => {
   const { song, isPlaying } = usePlayerStore();
   const { play, pause } = usePlayerControls();
 
-  if (!song) return null;
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardOpenedEvent = Keyboard.addListener('keyboardDidShow', () => {
+      console.log('opened');
+      setIsKeyboardVisible(true);
+    });
+    const keyboardClosedEvent = Keyboard.addListener('keyboardDidHide', () => {
+      console.log('closed');
+      setIsKeyboardVisible(false);
+    });
+
+    return () => {
+      keyboardOpenedEvent.remove();
+      keyboardClosedEvent.remove();
+    };
+  }, []);
+
+  if (!song || isKeyboardVisible) return null;
 
   return (
     <TouchableOpacity

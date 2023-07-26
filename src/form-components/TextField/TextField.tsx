@@ -52,3 +52,5 @@ export const TextField = <TFormValues extends FieldValues>(
     />
   );
 };
+
+TextField.Icon = TextInput.Icon;

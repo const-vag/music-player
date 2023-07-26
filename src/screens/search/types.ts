@@ -8,6 +8,7 @@ export enum SearchRoutes {
 
 export type SearchStackParamList = {
   [SearchRoutes.MAIN]: undefined;
+  [SearchRoutes.SEARCH_SCREEN]: undefined;
   [SearchRoutes.CONTENT]: {
     screen: ContentRoutes;
     params: ContentParamList[ContentRoutes];

@@ -5,11 +5,23 @@ import { useSearchMain } from './useSearchMain';
 import { Spacer } from '../../ui-kit/Spacer';
 
 export const SearchMain = () => {
-  const { goToHawkTsibouki } = useSearchMain();
+  const { goToSearchPage, goToHawkTsibouki } = useSearchMain();
   return (
-    <Container centered>
+    <Container expand centered={false}>
+      <Button
+        contentStyle={{
+          flexDirection: 'row-reverse',
+          justifyContent: 'space-between',
+        }}
+        style={{ borderRadius: 5 }}
+        mode="contained"
+        icon="magnify"
+        onPress={goToSearchPage}
+      >
+        Search
+      </Button>
       <Spacer />
-      <Button mode='contained' onPress={goToHawkTsibouki}>
+      <Button mode="contained" onPress={goToHawkTsibouki}>
         Go to hawk
       </Button>
     </Container>
