@@ -8,17 +8,29 @@ import { uiVariables } from './variables';
 
 type ContainerProps = BoxProps & {
   onClose?: () => void;
+  topAwareSpacer?: boolean;
+  variant?: 'screen' | 'modal';
 };
 
 export const Container = (props: ContainerProps) => {
-  const { children, onClose } = props;
+  const {
+    children,
+    onClose,
+    topAwareSpacer = true,
+    variant = 'screen',
+  } = props;
 
   return (
     <Box style={{ flex: 1 }}>
-      <StatusBar style='light' />
+      {topAwareSpacer && <Spacer size={70} />}
+      <StatusBar style="light" />
       {onClose && (
-        <Box direction='row' style={{ alignSelf: 'flex-start' }}>
-          <IconButton onPress={onClose} icon='chevron-down' size={34} />
+        <Box direction="row" style={{ alignSelf: 'flex-start' }}>
+          <IconButton
+            onPress={onClose}
+            icon={variant === 'modal' ? 'chevron-down' : 'chevron-left'}
+            size={34}
+          />
         </Box>
       )}
       <Box
@@ -40,7 +52,5 @@ export const Container = (props: ContainerProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
