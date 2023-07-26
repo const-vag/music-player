@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { Keyboard } from 'react-native';
-import { useSignInMutation } from '../../../api/hooks/signIn.query';
 import { SignUpFormValues } from './types';
+import { useSignUpMutation } from '../../../api/hooks/signUp.query';
 
-export const useSignIn = () => {
+export const useSignUp = () => {
   const form = useForm<SignUpFormValues>();
-  const { mutate, ...signUpMutation } = useSignInMutation();
+  const { mutate, ...signUpMutation } = useSignUpMutation();
 
   const onSubmit = (values: SignUpFormValues) => {
+    console.log('🚀 ~ file: useSignUp.ts:11 ~ onSubmit ~ values:', values);
     Keyboard.dismiss();
     mutate(values);
   };

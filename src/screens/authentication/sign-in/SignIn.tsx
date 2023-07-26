@@ -5,8 +5,7 @@ import { Typography } from '../../../ui-kit/Typography';
 import { Container } from '../../../ui-kit/Container';
 import { Spacer } from '../../../ui-kit/Spacer';
 import { TextField } from '../../../form-components/TextField/TextField';
-
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+import { EMAIL_REGEX } from '../../../shared/email.regex';
 
 export const SignIn = () => {
   const { form, onSubmit, goToSignUp } = useSignIn();
