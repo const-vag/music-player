@@ -14,7 +14,7 @@ type SongCardProps = {
 };
 
 const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
-  const { likeSongMutation, show } = useSongCard();
+  const { likeSongMutation, show, unlikeSongMutation } = useSongCard();
   const { updateAndPlaySong } = usePlayerControls();
 
   return (
@@ -23,25 +23,25 @@ const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
         song.link
           ? () => updateAndPlaySong({ ...song, albumImage })
           : () =>
-              show("Song can't play right now, try again later.")
+            show('Song can\'t play right now, try again later.')
       }
     >
-      <Box expand>
+      <Box centered={false} expand>
         <Box
           style={{
             justifyContent: 'space-between',
           }}
-          direction="row"
+          direction='row'
         >
           <Box style={{ alignItems: 'flex-start' }}>
-            <Typography variant="titleMedium">{song.name}</Typography>
-            <Typography variant="bodySmall">
+            <Typography variant='titleMedium'>{song.name}</Typography>
+            <Typography variant='bodySmall'>
               {song.artists.map((artist) => artist.name).join(', ')}
             </Typography>
           </Box>
           <IconButton
-            icon="heart"
-            onPress={() => likeSongMutation.mutate(song.id)}
+            icon={song.liked ? 'heart' : 'heart-outline'}
+            onPress={song.liked ? () => unlikeSongMutation.mutate(song.id) : () => likeSongMutation.mutate(song.id)}
           />
         </Box>
       </Box>

@@ -11,6 +11,7 @@ export interface Song {
   link: string;
   trackNumber: number;
   artists: ArtistSimple[];
+  liked: boolean;
 }
 
 export const getSongs = async () => {

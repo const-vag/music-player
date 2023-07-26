@@ -23,6 +23,7 @@ export const useLikeSongMutation = () => {
   return useMutation({
     mutationFn: likeSong,
     onSuccess: async () => {
+      console.log('Like song mutation success')
       queryClient.refetchQueries({ stale: true });
     },
     onError: (error) => {
@@ -38,11 +39,12 @@ export const useUnlikeSongMutation = () => {
   return useMutation({
     mutationFn: unlikeSong,
     onSuccess: async () => {
+      console.log('Unlike song mutation success')
       queryClient.refetchQueries({ stale: true });
     },
     onError: (error) => {
       if (isAxiosError<ErrorResponse>(error))
-        console.log('Like song mutation failed: ', error.response?.data);
+        console.log('Unlike song mutation failed: ', error.response?.data);
     },
   });
 };
