@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useEffect } from 'react';
 import { BottomNavigation, Snackbar } from 'react-native-paper';
 import { Home } from '../screens/home/Home';
 import { More } from '../screens/more/More';
@@ -33,6 +33,13 @@ export const BottomTabNavigator = () => {
     [BottomTabRoutes.SEARCH]: SearchStack,
     [BottomTabRoutes.MORE]: More,
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      hide();
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [hide, isVisible]);
 
   return (
     <>
