@@ -1,12 +1,15 @@
-import { memo } from 'react';
-import { Song } from '../../../../api/requests/songs.api';
-import { Box } from '../../../../ui-kit/Box/Box';
-import { Typography } from '../../../../ui-kit/Typography';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { useSongCard } from './useSongCard';
-import React from 'react';
+import {
+  useLikeSongMutation,
+  useUnlikeSongMutation,
+} from '../../../../api/hooks/songs.query';
+import { Song } from '../../../../api/requests/songs.api';
 import { usePlayerControls } from '../../../../shared/stores/player/usePlayerControls';
+import { useSnackbarControls } from '../../../../shared/stores/snackbar/useSnackbarControls';
+import { Box } from '../../../../ui-kit/Box/Box';
+import { Typography } from '../../../../ui-kit/Typography';
 
 type SongCardProps = {
   song: Song;
@@ -14,16 +17,17 @@ type SongCardProps = {
 };
 
 const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
-  const { likeSongMutation, show, unlikeSongMutation } = useSongCard();
   const { updateAndPlaySong } = usePlayerControls();
+  const { show } = useSnackbarControls();
+  const likeSongMutation = useLikeSongMutation();
+  const unlikeSongMutation = useUnlikeSongMutation();
 
   return (
     <TouchableOpacity
       onPress={
         song.link
           ? () => updateAndPlaySong({ ...song, albumImage })
-          : () =>
-            show('Song can\'t play right now, try again later.')
+          : () => show("Song can't play right now, try again later.")
       }
     >
       <Box centered={false} expand>
@@ -31,17 +35,21 @@ const SongCardComponent = ({ song, albumImage }: SongCardProps) => {
           style={{
             justifyContent: 'space-between',
           }}
-          direction='row'
+          direction="row"
         >
           <Box style={{ alignItems: 'flex-start' }}>
-            <Typography variant='titleMedium'>{song.name}</Typography>
-            <Typography variant='bodySmall'>
+            <Typography variant="titleMedium">{song.name}</Typography>
+            <Typography variant="bodySmall">
               {song.artists.map((artist) => artist.name).join(', ')}
             </Typography>
           </Box>
           <IconButton
             icon={song.liked ? 'heart' : 'heart-outline'}
-            onPress={song.liked ? () => unlikeSongMutation.mutate(song.id) : () => likeSongMutation.mutate(song.id)}
+            onPress={
+              song.liked
+                ? () => unlikeSongMutation.mutate(song.id)
+                : () => likeSongMutation.mutate(song.id)
+            }
           />
         </Box>
       </Box>
