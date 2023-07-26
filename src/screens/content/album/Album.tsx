@@ -24,7 +24,7 @@ export const Album = () => {
   const album = albumQuery.data;
 
   return (
-    <Container>
+    <Container topAwareSpacer={false}>
       <Box>
         <Image
           style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}

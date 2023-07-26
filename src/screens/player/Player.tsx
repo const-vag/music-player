@@ -19,7 +19,11 @@ export const Player = () => {
   }
 
   return (
-    <Container onClose={navigation.goBack}>
+    <Container
+      variant="modal"
+      topAwareSpacer={false}
+      onClose={navigation.goBack}
+    >
       <Image
         style={{
           width: 250,

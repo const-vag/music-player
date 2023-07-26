@@ -25,7 +25,7 @@ export const Artist = () => {
   const separatedData = separateAlbumsAndSingles(artist.albums);
 
   return (
-    <Container centered={false} ph={0}>
+    <Container topAwareSpacer={false} centered={false} ph={0}>
       <SectionList
         sections={separatedData}
         renderSectionHeader={({ section: { title } }) => (
@@ -34,7 +34,7 @@ export const Artist = () => {
               paddingHorizontal: uiVariables.spacer.horizontalPadding,
               marginVertical: 15,
             }}
-            variant='titleLarge'
+            variant="titleLarge"
           >
             {title}
           </Typography>
@@ -52,7 +52,7 @@ export const Artist = () => {
                 }}
               />
               <Typography
-                variant='displayMedium'
+                variant="displayMedium"
                 style={{
                   left: uiVariables.spacer.horizontalPadding,
                   fontWeight: 'bold',
@@ -65,21 +65,22 @@ export const Artist = () => {
             </Box>
             <Box
               style={{ justifyContent: 'space-between', width: '100%' }}
-              direction='row'
-              p={uiVariables.spacer.horizontalPadding}>
+              direction="row"
+              p={uiVariables.spacer.horizontalPadding}
+            >
               <Button
                 textColor={theme.colors.onBackground}
                 uppercase
-                mode='outlined'
-                icon='play'
+                mode="outlined"
+                icon="play"
               >
                 Play
               </Button>
               <Button
                 textColor={theme.colors.onBackground}
                 uppercase
-                mode='outlined'
-                icon='plus-circle-outline'
+                mode="outlined"
+                icon="plus-circle-outline"
               >
                 Follow
               </Button>
