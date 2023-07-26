@@ -6,7 +6,7 @@ import { BoxProps } from './types';
 export const Box = (props: BoxProps) => {
   const theme = useTheme();
 
-  const { direction = 'column', expand = false, transparent = false } = props;
+  const { direction = 'column', expand = false, transparent = false, centered = true } = props;
 
   return (
     <View
@@ -32,7 +32,8 @@ export const Box = (props: BoxProps) => {
           paddingHorizontal: props.ph,
           paddingVertical: props.pv,
         },
-        expand ? styles.boxExpanded : styles.box,
+        expand ? styles.boxExpanded : undefined,
+        centered ? styles.centered : undefined,
         props.style,
       ]}
     />
@@ -40,8 +41,9 @@ export const Box = (props: BoxProps) => {
 };
 
 const styles = StyleSheet.create({
-  box: {
+  centered: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   boxExpanded: {
     alignItems: 'stretch',

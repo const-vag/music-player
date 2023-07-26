@@ -67,4 +67,5 @@ export type BoxProps = ViewProps & {
    * Sets the background color to 'transparent'
    */
   transparent?: boolean;
+  centered?: boolean;
 };

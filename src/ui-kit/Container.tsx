@@ -15,10 +15,10 @@ export const Container = (props: ContainerProps) => {
 
   return (
     <Box style={{ flex: 1 }}>
-      <StatusBar style="light" />
+      <StatusBar style='light' />
       {onClose && (
-        <Box direction="row" style={{ alignSelf: 'flex-start' }}>
-          <IconButton onPress={onClose} icon="chevron-down" size={34} />
+        <Box direction='row' style={{ alignSelf: 'flex-start' }}>
+          <IconButton onPress={onClose} icon='chevron-down' size={34} />
         </Box>
       )}
       <Box
@@ -40,7 +40,7 @@ export const Container = (props: ContainerProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });

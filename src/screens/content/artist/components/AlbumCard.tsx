@@ -17,14 +17,14 @@ const AlbumCardComponent = ({ album, onPress }: AlbumCardProps) => {
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Box ph={uiVariables.spacer.horizontalPadding} direction="row">
+      <Box centered={false} ph={uiVariables.spacer.horizontalPadding} direction='row'>
         <Image
           style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
           source={{ uri: album.image }}
         />
         <Box ml={10} style={{ alignItems: 'flex-start' }}>
-          <Typography variant="titleMedium">{album.name}</Typography>
-          <Typography variant="bodySmall">
+          <Typography variant='titleMedium'>{album.name}</Typography>
+          <Typography variant='bodySmall'>
             {new Date(album.releaseDate).getFullYear()}
           </Typography>
         </Box>

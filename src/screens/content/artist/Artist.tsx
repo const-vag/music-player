@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, SectionList, View } from 'react-native';
+import { Dimensions, Image, SectionList } from 'react-native';
 import { ActivityIndicator, Button, useTheme } from 'react-native-paper';
 import { Album } from '../../../api/requests/albums.api';
 import { Box } from '../../../ui-kit/Box/Box';
@@ -25,7 +25,7 @@ export const Artist = () => {
   const separatedData = separateAlbumsAndSingles(artist.albums);
 
   return (
-    <Container ph={0}>
+    <Container centered={false} ph={0}>
       <SectionList
         sections={separatedData}
         renderSectionHeader={({ section: { title } }) => (
@@ -34,49 +34,52 @@ export const Artist = () => {
               paddingHorizontal: uiVariables.spacer.horizontalPadding,
               marginVertical: 15,
             }}
-            variant="titleLarge"
+            variant='titleLarge'
           >
             {title}
           </Typography>
         )}
         ListHeaderComponent={
-          <Box expand>
-            <ImageBackground
-              style={{
-                flex: 1,
-                width: '100%',
-                height: 350,
-              }}
-              source={{
-                uri: artist.image,
-              }}
-            >
-              <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' }} />
-            </ImageBackground>
-            <Box
-              ph={uiVariables.spacer.horizontalPadding}
-              direction="row"
-              style={{
-                justifyContent: 'space-between',
-                backgroundColor: 'transparent',
-                width: '100%',
-                position: 'absolute',
-                bottom: 0,
-              }}
-            >
-              <Typography
-                variant="displayMedium"
+          <Box style={{ alignItems: 'flex-start' }}>
+            <Box>
+              <Image
                 style={{
+                  width: Dimensions.get('screen').width,
+                  height: 350,
+                }}
+                source={{
+                  uri: artist.image,
+                }}
+              />
+              <Typography
+                variant='displayMedium'
+                style={{
+                  left: uiVariables.spacer.horizontalPadding,
                   fontWeight: 'bold',
+                  bottom: 0,
+                  position: 'absolute',
                 }}
               >
                 {artist.name}
               </Typography>
+            </Box>
+            <Box
+              style={{ justifyContent: 'space-between', width: '100%' }}
+              direction='row'
+              p={uiVariables.spacer.horizontalPadding}>
               <Button
                 textColor={theme.colors.onBackground}
                 uppercase
-                mode="outlined"
-                icon="plus-circle-outline"
+                mode='outlined'
+                icon='play'
+              >
+                Play
+              </Button>
+              <Button
+                textColor={theme.colors.onBackground}
+                uppercase
+                mode='outlined'
+                icon='plus-circle-outline'
               >
                 Follow
               </Button>

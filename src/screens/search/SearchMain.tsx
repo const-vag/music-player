@@ -7,9 +7,9 @@ import { Spacer } from '../../ui-kit/Spacer';
 export const SearchMain = () => {
   const { goToHawkTsibouki } = useSearchMain();
   return (
-    <Container>
+    <Container centered>
       <Spacer />
-      <Button mode="contained" onPress={goToHawkTsibouki}>
+      <Button mode='contained' onPress={goToHawkTsibouki}>
         Go to hawk
       </Button>
     </Container>
