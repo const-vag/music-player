@@ -6,6 +6,10 @@ import { SearchRoutes, SearchStackParamList } from './types';
 export const useSearchMain = () => {
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 
+  const goToSearchPage = () => {
+    navigation.navigate(SearchRoutes.SEARCH_SCREEN);
+  };
+
   const goToHawkTsibouki = () => {
     /* 
       Nesting navigation guide:
@@ -21,5 +25,6 @@ export const useSearchMain = () => {
 
   return {
     goToHawkTsibouki,
+    goToSearchPage,
   };
 };
