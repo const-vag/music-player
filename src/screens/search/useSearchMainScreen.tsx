@@ -3,7 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { ContentRoutes } from '../content/types';
 import { SearchRoutes, SearchStackParamList } from './types';
 
-export const useSearchMain = () => {
+export const useSearchMainScreen = () => {
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 
   const goToSearchPage = () => {

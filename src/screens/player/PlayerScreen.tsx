@@ -1,15 +1,15 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { Image } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
+import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';
+import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
 import { Box } from '../../ui-kit/Box/Box';
 import { Container } from '../../ui-kit/Container';
-import { Image } from 'react-native';
-import { usePlayer } from './usePlayerScreen';
 import { Spacer } from '../../ui-kit/Spacer';
-import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
-import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';
 
 export const Player = () => {
-  const { navigation } = usePlayer();
+  const navigation = useNavigation();
   const { play, pause } = usePlayerControls();
   const { song, isPlaying } = usePlayerStore();
 

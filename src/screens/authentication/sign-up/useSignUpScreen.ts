@@ -3,7 +3,7 @@ import { Keyboard } from 'react-native';
 import { SignUpFormValues } from './types';
 import { useSignUpMutation } from '../../../api/hooks/signUp.query';
 
-export const useSignUp = () => {
+export const useSignUpScreen = () => {
   const form = useForm<SignUpFormValues>();
   const { mutate, ...signUpMutation } = useSignUpMutation();
 

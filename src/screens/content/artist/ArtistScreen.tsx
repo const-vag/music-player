@@ -8,10 +8,11 @@ import { Spacer } from '../../../ui-kit/Spacer';
 import { Typography } from '../../../ui-kit/Typography';
 import { uiVariables } from '../../../ui-kit/variables';
 import { AlbumCard } from './components/AlbumCard';
-import { useArtist } from './useArtistScreen';
+import { useArtistScreen } from './useArtistScreen';
 
 export const Artist = () => {
-  const { artistQuery, separateAlbumsAndSingles, goToAlbum } = useArtist();
+  const { artistQuery, separateAlbumsAndSingles, goToAlbum } =
+    useArtistScreen();
   const theme = useTheme();
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)

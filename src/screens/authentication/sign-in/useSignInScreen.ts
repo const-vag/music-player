@@ -7,7 +7,7 @@ import { AuthenticationRouteParamList, AuthenticationRoutes } from '../types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { DEFAULT_EMAIL, DEFAULT_PASSWORD } from '@env';
 
-export const useSignIn = () => {
+export const useSignInScreen = () => {
   const form = useForm<SignInFormValues>({
     defaultValues: {
       email: DEFAULT_EMAIL,

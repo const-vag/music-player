@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSignIn } from './useSignInScreen';
+import { useSignInScreen } from './useSignInScreen';
 import { Button } from 'react-native-paper';
 import { Typography } from '../../../ui-kit/Typography';
 import { Container } from '../../../ui-kit/Container';
@@ -8,7 +8,7 @@ import { TextField } from '../../../form-components/TextField/TextField';
 import { EMAIL_REGEX } from '../../../shared/email.regex';
 
 export const SignIn = () => {
-  const { form, onSubmit, goToSignUp } = useSignIn();
+  const { form, onSubmit, goToSignUp } = useSignInScreen();
 
   return (
     <Container>

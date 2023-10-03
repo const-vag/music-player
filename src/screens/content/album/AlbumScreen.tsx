@@ -5,14 +5,14 @@ import { Song } from '../../../api/requests/songs.api';
 import { Container } from '../../../ui-kit/Container';
 import { Typography } from '../../../ui-kit/Typography';
 import { SongCard } from './components/SongCard';
-import { useAlbum } from './useAlbumScreen';
+import { useAlbumScreen } from './useAlbumScreen';
 import { Spacer } from '../../../ui-kit/Spacer';
 import { Box } from '../../../ui-kit/Box/Box';
 
 const IMAGE_SIZE = 200;
 
 export const Album = () => {
-  const albumQuery = useAlbum();
+  const albumQuery = useAlbumScreen();
 
   if (albumQuery.isLoading || !albumQuery.isSuccess)
     return (

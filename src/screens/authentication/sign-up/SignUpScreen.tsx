@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSignUp } from './useSignUpScreen';
+import { useSignUpScreen } from './useSignUpScreen';
 import { Button } from 'react-native-paper';
 import { Typography } from '../../../ui-kit/Typography';
 import { Container } from '../../../ui-kit/Container';
@@ -8,7 +8,7 @@ import { TextField } from '../../../form-components/TextField/TextField';
 import { EMAIL_REGEX } from '../../../shared/email.regex';
 
 export const SignUp = () => {
-  const { form, onSubmit } = useSignUp();
+  const { form, onSubmit } = useSignUpScreen();
 
   return (
     <Container>

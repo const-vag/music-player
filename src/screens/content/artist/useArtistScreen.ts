@@ -7,7 +7,7 @@ import { SearchRoutes, SearchStackParamList } from '../../search/types';
 
 type ArtistRouteProp = RouteProp<ContentParamList, ContentRoutes.ARTIST>;
 
-export const useArtist = () => {
+export const useArtistScreen = () => {
   const { params } = useRoute<ArtistRouteProp>();
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 

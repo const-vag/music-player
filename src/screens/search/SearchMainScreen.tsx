@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
 import { Container } from '../../ui-kit/Container';
-import { useSearchMain } from './useSearchMainScreen';
+import { useSearchMainScreen } from './useSearchMainScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 
 export const SearchMain = () => {
-  const { goToSearchPage, goToHawkTsibouki } = useSearchMain();
+  const { goToSearchPage, goToHawkTsibouki } = useSearchMainScreen();
   return (
     <Container expand centered={false}>
       <Button
