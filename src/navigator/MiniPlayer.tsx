@@ -43,7 +43,7 @@ export const MiniPlayer = () => {
 
   return (
     <TouchableOpacity
-      onLongPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
+      onPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
     >
       <Box
         direction="row"
