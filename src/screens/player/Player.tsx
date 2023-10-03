@@ -15,7 +15,7 @@ export const Player = () => {
 
   if (!song) {
     navigation.goBack();
-    return;
+    return null;
   }
 
   return (
