@@ -4,8 +4,8 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import { AuthenticationRouteParamList, AuthenticationRoutes } from './types';
-import { SignIn } from './sign-in/SignIn';
-import { SignUp } from './sign-up/SignUp';
+import { SignIn } from './sign-in/SignInScreen';
+import { SignUp } from './sign-up/SignUpScreen';
 
 const Stack = createStackNavigator<AuthenticationRouteParamList>();
 

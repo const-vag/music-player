@@ -1,6 +1,6 @@
 import React from 'react';
 import { BottomTabParamList, BottomTabRoutes } from './types';
-import { Player } from '../screens/player/Player';
+import { Player } from '../screens/player/PlayerScreen';
 import {
   TransitionPresets,
   createStackNavigator,

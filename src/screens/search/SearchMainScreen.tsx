@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
 import { Container } from '../../ui-kit/Container';
-import { useSearchMain } from './useSearchMain';
+import { useSearchMain } from './useSearchMainScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 
 export const SearchMain = () => {

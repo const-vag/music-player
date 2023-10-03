@@ -4,7 +4,7 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import { ContentStack } from '../content/ContentStack';
-import { SearchMain } from './SearchMain';
+import { SearchMain } from './SearchMainScreen';
 import { SearchRoutes, SearchStackParamList } from './types';
 import SearchScreen from './SearchScreen';
 

@@ -8,7 +8,7 @@ import { Spacer } from '../../../ui-kit/Spacer';
 import { Typography } from '../../../ui-kit/Typography';
 import { uiVariables } from '../../../ui-kit/variables';
 import { AlbumCard } from './components/AlbumCard';
-import { useArtist } from './useArtist';
+import { useArtist } from './useArtistScreen';
 
 export const Artist = () => {
   const { artistQuery, separateAlbumsAndSingles, goToAlbum } = useArtist();

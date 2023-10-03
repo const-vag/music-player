@@ -3,8 +3,8 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import React from 'react';
-import { Album } from './album/Album';
-import { Artist } from './artist/Artist';
+import { Album } from './album/AlbumScreen';
+import { Artist } from './artist/ArtistScreen';
 import { ContentParamList, ContentRoutes } from './types';
 
 const Stack = createStackNavigator<ContentParamList>();

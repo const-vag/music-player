@@ -3,7 +3,7 @@ import { IconButton, Text } from 'react-native-paper';
 import { Box } from '../../ui-kit/Box/Box';
 import { Container } from '../../ui-kit/Container';
 import { Image } from 'react-native';
-import { usePlayer } from './usePlayer';
+import { usePlayer } from './usePlayerScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
 import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';

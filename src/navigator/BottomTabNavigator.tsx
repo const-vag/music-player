@@ -1,7 +1,7 @@
 import React, { ComponentProps, useEffect } from 'react';
 import { BottomNavigation, Snackbar } from 'react-native-paper';
-import { Home } from '../screens/home/Home';
-import { More } from '../screens/more/More';
+import { Home } from '../screens/home/HomeScreen';
+import { More } from '../screens/more/MoreScreen';
 import { SearchStack } from '../screens/search/SearchStack';
 import { MiniPlayer } from './MiniPlayer';
 import { BottomTabRoutes } from './types';
