@@ -13,7 +13,6 @@ const SearchScreen = () => {
         label="Search"
         placeholder="Type a song name, album or artist"
       />
-      {/* <Typography>Search screen</Typography> */}
     </Container>
   );
 };
