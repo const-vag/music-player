@@ -9,11 +9,17 @@ import { Typography } from '../../../ui-kit/Typography';
 import { uiVariables } from '../../../ui-kit/variables';
 import { AlbumCard } from './components/AlbumCard';
 import { useArtistScreen } from './useArtistScreen';
+import {
+  useFollowMutation,
+  useUnfollowMutation,
+} from '../../../api/hooks/artists.query';
 
 export const Artist = () => {
   const { artistQuery, separateAlbumsAndSingles, goToAlbum } =
     useArtistScreen();
   const theme = useTheme();
+  const followMutation = useFollowMutation();
+  const unfollowMutation = useUnfollowMutation();
 
   if (artistQuery.isLoading || !artistQuery.isSuccess)
     return (
@@ -78,12 +84,21 @@ export const Artist = () => {
                 Play
               </Button>
               <Button
+                onPress={
+                  artist.followed
+                    ? () => unfollowMutation.mutate(artist.id)
+                    : () => followMutation.mutate(artist.id)
+                }
                 textColor={theme.colors.onBackground}
                 uppercase
                 mode="outlined"
-                icon="plus-circle-outline"
+                icon={
+                  artist.followed
+                    ? 'minus-circle-outline'
+                    : 'plus-circle-outline'
+                }
               >
-                Follow
+                {artist.followed ? 'Unfollow' : 'Follow'}
               </Button>
             </Box>
           </Box>

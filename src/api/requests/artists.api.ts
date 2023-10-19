@@ -13,6 +13,7 @@ export interface Artist {
   name: string;
   updatedAt: Date;
   genres: any[];
+  followed: boolean;
 }
 
 export interface ArtistSimple {
@@ -30,4 +31,16 @@ export const getArtistsRequest = async () => {
   const axios = AxiosInterceptor.Instance;
 
   return (await axios.get(artistsUrl)).data;
+};
+
+export const followArtist = async (id: number) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return await axios.post(`${artistsUrl}/${id}/follow`);
+};
+
+export const unfollowArtist = async (id: number) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return await axios.post(`${artistsUrl}/${id}/unfollow`);
 };
