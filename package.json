@@ -21,6 +21,7 @@
     "expo": "~48.0.15",
     "expo-av": "~13.2.1",
     "expo-status-bar": "~1.4.4",
+    "lodash": "^4.17.21",
     "ramda": "^0.29.0",
     "react": "18.2.0",
     "react-hook-form": "^7.43.9",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/lodash": "^4.14.200",
     "@types/ramda": "^0.29.3",
     "@types/react": "~18.0.14",
     "@types/react-native-vector-icons": "^6.4.13",
