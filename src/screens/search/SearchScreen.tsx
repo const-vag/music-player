@@ -1,11 +1,15 @@
 import React from 'react';
 import { TextInput } from 'react-native-paper';
 import { Container } from '../../ui-kit/Container';
+import { useSearchScreen } from './useSearchScreen';
 
 const SearchScreen = () => {
+  const { delayedFn } = useSearchScreen();
+
   return (
     <Container expand centered={false}>
       <TextInput
+        onChange={() => delayedFn('asd')}
         style={{ width: '100%' }}
         autoFocus
         right={<TextInput.Icon icon="magnify" />}
