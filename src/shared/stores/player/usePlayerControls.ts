@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-import { useStore } from './PlayerStore';
-import { asyncStorage } from '../../hooks/useAsyncStorage';
+import { SongWithAlbumImage } from '../../../api/requests/songs.api';
 import { MediaSound } from '../../MediaSound';
-import { Song } from '../../../api/requests/songs.api';
+import { asyncStorage } from '../../hooks/useAsyncStorage';
+import { useStore } from './PlayerStore';
 
 export const ASYNC_STORAGE_SONG_KEY = 'async-storage-latest-song';
 
@@ -27,14 +27,18 @@ export const usePlayerControls = () => {
   });
 
   const play = async (link: string) => {
-    await mediaSound.play(link);
+    try {
+      await mediaSound.play(link);
+    } catch (err) {
+      console.log('🚀 ~ file: usePlayerControls.ts:33 ~ play ~ err:', err);
+    }
   };
 
   const pause = async () => {
     await mediaSound.pause();
   };
 
-  const updateAndPlay = async (newSong: Song & { albumImage: string }) => {
+  const updateAndPlay = async (newSong: SongWithAlbumImage) => {
     updateSong(newSong);
     setAsyncStorage(ASYNC_STORAGE_SONG_KEY, newSong);
     await play(newSong.link);
@@ -42,7 +46,7 @@ export const usePlayerControls = () => {
 
   useEffect(() => {
     const getAndUpdateLatestSong = async () => {
-      const storedSong = await getAsyncStorage<Song & { albumImage: string }>(
+      const storedSong = await getAsyncStorage<SongWithAlbumImage>(
         ASYNC_STORAGE_SONG_KEY
       );
       if (storedSong) {
@@ -55,6 +59,6 @@ export const usePlayerControls = () => {
   return {
     updateAndPlaySong: updateAndPlay,
     play,
-    pause,
+    pause
   };
 };

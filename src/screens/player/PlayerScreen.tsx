@@ -1,22 +1,32 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image } from 'react-native';
-import { IconButton, Text } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
+import { useNextSongQuery } from '../../api/hooks/songs.query';
 import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';
 import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
+import { useSnackbarControls } from '../../shared/stores/snackbar/useSnackbarControls';
 import { Box } from '../../ui-kit/Box/Box';
 import { Container } from '../../ui-kit/Container';
 import { Spacer } from '../../ui-kit/Spacer';
+import { Typography } from '../../ui-kit/Typography';
 
 export const Player = () => {
   const navigation = useNavigation();
-  const { play, pause } = usePlayerControls();
-  const { song, isPlaying } = usePlayerStore();
+  const { play, pause, updateAndPlaySong } = usePlayerControls();
+  const { song: currentSong, isPlaying } = usePlayerStore();
+  const { data: nextSong } = useNextSongQuery(currentSong?.id);
+  const { show } = useSnackbarControls();
 
-  if (!song) {
+  if (!currentSong) {
     navigation.goBack();
     return null;
   }
+
+  console.log(
+    '🚀 ~ file: PlayerScreen.tsx:17 ~ Player ~ currentSong:',
+    currentSong
+  );
 
   return (
     <Container
@@ -30,36 +40,47 @@ export const Player = () => {
           height: 250,
         }}
         source={{
-          uri: song.albumImage,
+          uri: currentSong.albumImage,
         }}
       />
       <Box direction="row" mb={20}>
         <IconButton
           icon="skip-previous"
           size={54}
-          onPress={() => console.log('Pressed')}
+          onPress={() => play(currentSong.link)}
         />
         <Spacer mode="horizontal" />
         {isPlaying ? (
           <IconButton icon={'pause'} size={84} onPress={pause} />
         ) : (
-          <IconButton icon={'play'} size={84} onPress={() => play(song.link)} />
+          <IconButton
+            icon={'play'}
+            size={84}
+            onPress={() => play(currentSong.link)}
+          />
         )}
         <Spacer mode="horizontal" />
         <IconButton
           icon="skip-next"
           size={54}
-          onPress={() => console.log('Pressed')}
+          onPress={() => {
+            if (!nextSong)
+              show('Unable to play next song right now, try again later.');
+            else updateAndPlaySong(nextSong);
+          }}
         />
       </Box>
-      <Box style={{ justifyContent: 'space-between' }} direction="row">
-        <Text variant="titleMedium">{song?.name}</Text>
-        <IconButton
-          icon="heart"
-          onPress={() => console.log('favourite song snikaros mono')}
-          size={34}
-        />
+      <Box style={{ justifyContent: 'space-between' }} direction="column">
+        <Typography variant="titleMedium">{currentSong?.name}</Typography>
+        <Typography variant="bodyMedium">
+          {currentSong.artists.map((artist) => artist.name).join(', ')}
+        </Typography>
       </Box>
+      <IconButton
+        icon="heart"
+        onPress={() => console.log('favourite song snikaros mono')}
+        size={34}
+      />
     </Container>
   );
 };

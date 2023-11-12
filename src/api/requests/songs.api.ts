@@ -2,7 +2,7 @@ import { API_URL } from '@env';
 import { AxiosInterceptor } from '../AxiosInterceptor';
 import { ArtistSimple } from './artists.api';
 
-const songsUrl = `${API_URL}/songs`;
+const songsUrl = `${API_URL}/songs` as const;
 
 export interface Song {
   id: number;
@@ -14,10 +14,20 @@ export interface Song {
   liked: boolean;
 }
 
+export type SongWithAlbumImage = Song & { albumImage: string };
+
 export const getSongs = async () => {
   const axios = AxiosInterceptor.Instance;
 
   return (await axios.get<Song[]>(songsUrl)).data;
+};
+
+export const nextSong = async (currentSongId: number) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (
+    await axios.get<SongWithAlbumImage>(`${songsUrl}/${currentSongId}/next`)
+  ).data;
 };
 
 export const likeSong = async (id: number) => {

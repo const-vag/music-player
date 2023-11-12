@@ -1,6 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { isAxiosError } from 'axios';
-import { Song, getSongs, likeSong, unlikeSong } from '../requests/songs.api';
+import {
+  Song,
+  getSongs,
+  likeSong,
+  unlikeSong,
+  nextSong,
+  SongWithAlbumImage,
+} from '../requests/songs.api';
 import { ErrorResponse } from '../shared-types';
 
 const SONGS_QUERY_KEY = 'songs';
@@ -17,13 +24,35 @@ export const useSongsQuery = () => {
   });
 };
 
+export const useNextSongQuery = (currentSongId: number | undefined) => {
+  return useQuery<SongWithAlbumImage | undefined>(
+    [SONGS_QUERY_KEY, currentSongId],
+    () => {
+      if (!currentSongId) return Promise.resolve(undefined);
+      return nextSong(currentSongId);
+    },
+    {
+      onError: (error) => {
+        if (isAxiosError<ErrorResponse>(error)) {
+          console.log(
+            '🚀 ~ file: songs.query.ts:10 ~ useSongsQuery ~ error:',
+            error.response?.data
+          );
+        }
+      },
+      cacheTime: 0,
+      staleTime: 0,
+    }
+  );
+};
+
 export const useLikeSongMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: likeSong,
     onSuccess: async () => {
-      console.log('Like song mutation success')
+      console.log('Like song mutation success');
       queryClient.refetchQueries({ stale: true });
     },
     onError: (error) => {
@@ -39,7 +68,7 @@ export const useUnlikeSongMutation = () => {
   return useMutation({
     mutationFn: unlikeSong,
     onSuccess: async () => {
-      console.log('Unlike song mutation success')
+      console.log('Unlike song mutation success');
       queryClient.refetchQueries({ stale: true });
     },
     onError: (error) => {
