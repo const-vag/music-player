@@ -4,12 +4,13 @@ import { Container } from '../../ui-kit/Container';
 import { useSearchScreen } from './useSearchScreen';
 
 const SearchScreen = () => {
-  const { delayedFn } = useSearchScreen();
+  const { delayedFn, searchResult } = useSearchScreen();
+  console.log("🚀 ~ file: SearchScreen.tsx:8 ~ SearchScreen ~ searchResult:", searchResult?.songs)
 
   return (
     <Container expand centered={false}>
       <TextInput
-        onChange={() => delayedFn('asd')}
+        onChangeText={delayedFn}
         style={{ width: '100%' }}
         autoFocus
         right={<TextInput.Icon icon="magnify" />}
