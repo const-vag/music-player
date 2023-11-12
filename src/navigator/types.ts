@@ -5,13 +5,13 @@ export enum AppNavigatorRoutes {
 
 export enum BottomTabRoutes {
   HOME = 'Home',
-  SEARCH = 'Search',
   MORE = 'More',
   PLAYER = 'Player',
 }
 
 export type BottomTabParamList = {
   [BottomTabRoutes.HOME]: undefined;
+  [BottomTabRoutes.MORE]: undefined;
   [BottomTabRoutes.PLAYER]: undefined;
 };
 
