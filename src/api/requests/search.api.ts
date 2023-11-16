@@ -2,7 +2,7 @@ import { API_URL } from '@env';
 import { AxiosInterceptor } from '../AxiosInterceptor';
 import { SongWithAlbumImage } from './songs.api';
 
-interface ContentRequiredInfo {
+export interface ContentRequiredInfo {
   id: number;
   name: string;
   image: string;

@@ -16,6 +16,12 @@ export interface Song {
 
 export type SongWithAlbumImage = Song & { albumImage: string };
 
+export const isSongWithAlbumImage = (
+  input: any
+): input is SongWithAlbumImage => {
+  return Boolean(input.trackNumber) && Boolean(input.albumImage);
+};
+
 export const getSongs = async () => {
   const axios = AxiosInterceptor.Instance;
 

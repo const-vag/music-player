@@ -13,11 +13,14 @@ import {
   useFollowMutation,
   useUnfollowMutation,
 } from '../../../api/hooks/artists.query';
+import { useContentNavigators } from '../useContentNavigators';
 
 export const Artist = () => {
-  const { artistQuery, separateAlbumsAndSingles, goToAlbum } =
-    useArtistScreen();
   const theme = useTheme();
+
+  const { artistQuery, separateAlbumsAndSingles } = useArtistScreen();
+  const { goToAlbum } = useContentNavigators();
+
   const followMutation = useFollowMutation();
   const unfollowMutation = useUnfollowMutation();
 
