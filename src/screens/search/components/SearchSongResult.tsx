@@ -43,21 +43,3 @@ export const SearchSongResult = ({ song }: SearchSongResultProps) => {
     </TouchableOpacity>
   );
 };
-
-// return (
-//     <TouchableOpacity onPress={() => console.log('item clicked')}>
-//       <Box
-//         centered={false}
-//         ph={uiVariables.spacer.horizontalPadding}
-//         direction="row"
-//       >
-//         <Image
-//           style={{ width: 35, height: 35 }}
-//           source={{ uri: item.albumImage }}
-//         />
-//         <Box ml={10} style={{ alignItems: 'flex-start' }}>
-//           <Typography variant="titleMedium">{item.name}</Typography>
-//         </Box>
-//       </Box>
-//     </TouchableOpacity>
-//   );

@@ -28,10 +28,5 @@ export const useSearchScreen = () => {
     },
   ];
 
-  console.log(
-    '🚀 ~ file: useSearchScreen.tsx:17 ~ useSearchScreen ~ searchResultSections:',
-    searchResultSections
-  );
-
   return { delayedFn, searchResultSections };
 };

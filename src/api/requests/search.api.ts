@@ -19,7 +19,6 @@ const searchUrl = `${API_URL}/search`;
 export const getSearchRequest = async (keyword: string) => {
   const axios = AxiosInterceptor.Instance;
 
-  console.log('request search');
   return (
     // equals to `${searchUrl}?keyword=${keyword}`
     (

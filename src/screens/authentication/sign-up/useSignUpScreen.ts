@@ -8,7 +8,6 @@ export const useSignUpScreen = () => {
   const { mutate, ...signUpMutation } = useSignUpMutation();
 
   const onSubmit = (values: SignUpFormValues) => {
-    console.log('🚀 ~ file: useSignUp.ts:11 ~ onSubmit ~ values:', values);
     Keyboard.dismiss();
     mutate(values);
   };

@@ -23,11 +23,6 @@ export const Player = () => {
     return null;
   }
 
-  console.log(
-    '🚀 ~ file: PlayerScreen.tsx:17 ~ Player ~ currentSong:',
-    currentSong
-  );
-
   return (
     <Container
       variant="modal"
@@ -45,6 +40,7 @@ export const Player = () => {
       />
       <Box direction="row" mb={20}>
         <IconButton
+          disabled
           icon="skip-previous"
           size={54}
           onPress={() => play(currentSong.link)}
@@ -76,11 +72,6 @@ export const Player = () => {
           {currentSong.artists.map((artist) => artist.name).join(', ')}
         </Typography>
       </Box>
-      <IconButton
-        icon="heart"
-        onPress={() => console.log('favourite song snikaros mono')}
-        size={34}
-      />
     </Container>
   );
 };

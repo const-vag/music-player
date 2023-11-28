@@ -25,11 +25,9 @@ export const MiniPlayer = () => {
 
   useEffect(() => {
     const keyboardOpenedEvent = Keyboard.addListener('keyboardDidShow', () => {
-      console.log('opened');
       setIsKeyboardVisible(true);
     });
     const keyboardClosedEvent = Keyboard.addListener('keyboardDidHide', () => {
-      console.log('closed');
       setIsKeyboardVisible(false);
     });
 
