@@ -49,16 +49,16 @@ export const usePlayerControls = () => {
       const storedSong = await getAsyncStorage<SongWithAlbumImage>(
         ASYNC_STORAGE_SONG_KEY
       );
-      if (storedSong) {
-        updateSong(storedSong);
-      }
+
+      updateSong(storedSong);
     };
+
     getAndUpdateLatestSong();
   }, [getAsyncStorage, updateSong]);
 
   return {
     updateAndPlaySong: updateAndPlay,
     play,
-    pause
+    pause,
   };
 };

@@ -9,4 +9,5 @@ export const asyncStorage = () => ({
       return JSON.parse(stringifiedSong);
     }
   },
+  remove: async (key: string) => await AsyncStorage.removeItem(key),
 });

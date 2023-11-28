@@ -3,12 +3,12 @@ import { equals } from 'ramda';
 import { Song } from '../../../api/requests/songs.api';
 
 type Action = {
-  updateSong: (newSong: Song & { albumImage: string }) => void;
+  updateSong: (newSong: (Song & { albumImage: string }) | undefined) => void;
   updateIsPlaying: (input: boolean) => void;
 };
 
 type State = {
-  song: Song & { albumImage: string } | undefined;
+  song: (Song & { albumImage: string }) | undefined;
   isPlaying: boolean;
 };
 
