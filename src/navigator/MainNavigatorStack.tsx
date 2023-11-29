@@ -1,5 +1,5 @@
 import React from 'react';
-import { BottomTabParamList, BottomTabRoutes } from './types';
+import { MainStackParamList, MainStackRoutes } from './types';
 import { Player } from '../screens/player/PlayerScreen';
 import {
   TransitionPresets,
@@ -7,13 +7,13 @@ import {
 } from '@react-navigation/stack';
 import { BottomTabNavigator } from './BottomTabNavigator';
 
-const Stack = createStackNavigator<BottomTabParamList>();
+const Stack = createStackNavigator<MainStackParamList>();
 export const MainNavigatorStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         options={{ headerShown: false }}
-        name={BottomTabRoutes.HOME}
+        name={MainStackRoutes.HOME}
         component={BottomTabNavigator}
       />
       <Stack.Screen
@@ -22,7 +22,7 @@ export const MainNavigatorStack = () => {
           headerShown: false,
           gestureEnabled: true,
         }}
-        name={BottomTabRoutes.PLAYER}
+        name={MainStackRoutes.PLAYER}
         component={Player}
       />
     </Stack.Navigator>

@@ -15,6 +15,16 @@ export type BottomTabParamList = {
   [BottomTabRoutes.PLAYER]: undefined;
 };
 
+export enum MainStackRoutes {
+  HOME = 'Home',
+  PLAYER = 'Player',
+}
+
+export type MainStackParamList = {
+  [MainStackRoutes.HOME]: undefined;
+  [MainStackRoutes.PLAYER]: undefined;
+};
+
 export type AppNavigatorRouteParamList = {
   [AppNavigatorRoutes.AUTHENTICATION]: undefined;
   [AppNavigatorRoutes.MAIN]: undefined;
