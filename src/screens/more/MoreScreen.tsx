@@ -4,7 +4,7 @@ import { Button } from 'react-native-paper';
 import { AUTH_TOKEN_KEY } from '../../shared/hooks/useAuthToken';
 import { Container } from '../../ui-kit/Container';
 import { ASYNC_STORAGE_SONG_KEY } from '../../shared/stores/player/usePlayerControls';
-import { asyncStorage } from '../../shared/utils/useAsyncStorage';
+import { asyncStorage } from '../../shared/utils/asyncStorage';
 
 export const More = () => {
   const queryClient = useQueryClient();
