@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { Text } from 'react-native-paper';
-// numberOfLines={1} ellipsizeMode="tail" style={{ flex: 1 }}
+
 type TextProps = ComponentProps<typeof Text>;
 type TypographyProps = TextProps & { truncate?: boolean };
 export const Typography = (props: TypographyProps) => {
