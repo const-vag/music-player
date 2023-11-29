@@ -5,7 +5,7 @@ import {
   getSongs,
   likeSong,
   unlikeSong,
-  nextSong,
+  getNextSong,
   SongWithAlbumImage,
 } from '../requests/songs.api';
 import { ErrorResponse } from '../shared-types';
@@ -29,7 +29,7 @@ export const useNextSongQuery = (currentSongId: number | undefined) => {
     [SONGS_QUERY_KEY, currentSongId],
     () => {
       if (!currentSongId) return Promise.resolve(undefined);
-      return nextSong(currentSongId);
+      return getNextSong(currentSongId);
     },
     {
       onError: (error) => {

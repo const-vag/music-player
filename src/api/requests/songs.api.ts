@@ -28,7 +28,7 @@ export const getSongs = async () => {
   return (await axios.get<Song[]>(songsUrl)).data;
 };
 
-export const nextSong = async (currentSongId: number) => {
+export const getNextSong = async (currentSongId: number) => {
   const axios = AxiosInterceptor.Instance;
 
   return (
