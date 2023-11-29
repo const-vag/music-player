@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
 import { SongWithAlbumImage } from '../../../api/requests/songs.api';
-import { MediaSound } from '../../MediaSound';
+import { MediaSound } from '../../player/MediaSound';
 import { asyncStorage } from '../../utils/asyncStorage';
-import { useStore } from './PlayerStore';
+import { PlayerStore } from './PlayerStore';
 
 export const ASYNC_STORAGE_SONG_KEY = 'async-storage-latest-song';
 
 export const usePlayerControls = () => {
-  const { updateSong, updateIsPlaying } = useStore((state) => ({
+  const { updateSong, updateIsPlaying } = PlayerStore((state) => ({
     updateSong: state.updateSong,
     updateIsPlaying: state.updateIsPlaying,
   }));

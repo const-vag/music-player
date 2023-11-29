@@ -1,7 +1,7 @@
-import { useStore } from './PlayerStore';
+import { PlayerStore } from './PlayerStore';
 
 export const usePlayerStore = () => {
-  const { song, isPlaying } = useStore((state) => ({
+  const { song, isPlaying } = PlayerStore((state) => ({
     song: state.song,
     isPlaying: state.isPlaying,
   }));

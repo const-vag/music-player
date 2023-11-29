@@ -12,7 +12,7 @@ type State = {
   isPlaying: boolean;
 };
 
-export const useStore = create<State & Action>()((set) => ({
+export const PlayerStore = create<State & Action>()((set) => ({
   song: undefined,
   isPlaying: false,
   updateSong: (newSong) =>
