@@ -1,11 +1,15 @@
 import React from 'react';
 import { Button } from 'react-native-paper';
 import { Container } from '../../ui-kit/Container';
-import { useSearchMainScreen } from './useSearchMainScreen';
+import { useHomeScreen } from './useHomeScreen';
 import { Spacer } from '../../ui-kit/Spacer';
+import { useUserQuery } from '../../api/hooks/user.query';
 
-export const SearchMain = () => {
-  const { goToSearchPage, goToHawkTsibouki } = useSearchMainScreen();
+export const HomeScreen = () => {
+  const { goToSearchPage, goToHawkTsibouki } = useHomeScreen();
+  const { data: user } = useUserQuery();
+  // console.log('🚀 ~ file: SearchMainScreen.tsx:11 ~ SearchMain ~ user:', user);
+
   return (
     <Container expand centered={false}>
       <Button
@@ -21,9 +25,9 @@ export const SearchMain = () => {
         Search
       </Button>
       <Spacer />
-      <Button mode="contained" onPress={goToHawkTsibouki}>
+      {/* <Button mode="contained" onPress={goToHawkTsibouki}>
         Go to hawk
-      </Button>
+      </Button> */}
     </Container>
   );
 };

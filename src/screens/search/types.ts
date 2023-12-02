@@ -1,15 +1,15 @@
 import { ContentParamList, ContentRoutes } from '../content/types';
 
-export enum SearchRoutes {
-  MAIN = 'Search main',
-  SEARCH_SCREEN = 'Search screen',
+export enum HomeRoutes {
+  HOME = 'Home',
+  SEARCH = 'Search',
   CONTENT = 'Content',
 }
 
 export type SearchStackParamList = {
-  [SearchRoutes.MAIN]: undefined;
-  [SearchRoutes.SEARCH_SCREEN]: undefined;
-  [SearchRoutes.CONTENT]: {
+  [HomeRoutes.HOME]: undefined;
+  [HomeRoutes.SEARCH]: undefined;
+  [HomeRoutes.CONTENT]: {
     screen: ContentRoutes;
     params: ContentParamList[ContentRoutes];
   };

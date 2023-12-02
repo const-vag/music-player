@@ -4,8 +4,8 @@ export enum AppNavigatorRoutes {
 }
 
 export enum BottomTabRoutes {
-  HOME = 'Home',
-  MORE = 'More',
+  HOME = 'Home Section',
+  MORE = 'More Section',
   PLAYER = 'Player',
 }
 

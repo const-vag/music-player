@@ -4,13 +4,13 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import { ContentStack } from '../content/ContentStack';
-import { SearchMain } from './SearchMainScreen';
-import { SearchRoutes, SearchStackParamList } from './types';
+import { HomeScreen } from './HomeScreen';
+import { HomeRoutes, SearchStackParamList } from './types';
 import SearchScreen from './SearchScreen';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 
-export const SearchStack = () => {
+export const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -18,8 +18,8 @@ export const SearchStack = () => {
           headerShown: false,
           gestureEnabled: true,
         }}
-        name={SearchRoutes.MAIN}
-        component={SearchMain}
+        name={HomeRoutes.HOME}
+        component={HomeScreen}
       />
       <Stack.Screen
         options={{
@@ -27,7 +27,7 @@ export const SearchStack = () => {
           gestureEnabled: true,
           ...TransitionPresets.RevealFromBottomAndroid,
         }}
-        name={SearchRoutes.SEARCH_SCREEN}
+        name={HomeRoutes.SEARCH}
         component={SearchScreen}
       />
       <Stack.Screen
@@ -36,7 +36,7 @@ export const SearchStack = () => {
           headerShown: false,
           gestureEnabled: true,
         }}
-        name={SearchRoutes.CONTENT}
+        name={HomeRoutes.CONTENT}
         component={ContentStack}
       />
     </Stack.Navigator>

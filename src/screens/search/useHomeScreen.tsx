@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ContentRoutes } from '../content/types';
-import { SearchRoutes, SearchStackParamList } from './types';
+import { HomeRoutes, SearchStackParamList } from './types';
 
-export const useSearchMainScreen = () => {
+export const useHomeScreen = () => {
   const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
 
   const goToSearchPage = () => {
-    navigation.navigate(SearchRoutes.SEARCH_SCREEN);
+    navigation.navigate(HomeRoutes.SEARCH);
   };
 
   const goToHawkTsibouki = () => {
@@ -15,7 +15,7 @@ export const useSearchMainScreen = () => {
       Nesting navigation guide:
       https://reactnavigation.org/docs/nesting-navigators#navigating-to-a-screen-in-a-nested-navigator
     */
-    navigation.navigate(SearchRoutes.CONTENT, {
+    navigation.navigate(HomeRoutes.CONTENT, {
       screen: ContentRoutes.ARTIST,
       params: {
         id: 2,
