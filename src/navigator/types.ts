@@ -1,31 +1,30 @@
 export enum AppNavigatorRoutes {
-  AUTHENTICATION = 'Authentication',
-  MAIN = 'Main',
+  AUTHENTICATION = 'Authentication Section',
+  MAIN = 'Main Section',
 }
 
+export type AppNavigatorRouteParamList = {
+  [AppNavigatorRoutes.AUTHENTICATION]: undefined;
+  [AppNavigatorRoutes.MAIN]: undefined;
+};
+
 export enum BottomTabRoutes {
-  HOME = 'Home Section',
-  MORE = 'More Section',
+  HOME = 'Home Tab',
+  MORE = 'More Tab',
   PLAYER = 'Player',
 }
 
 export type BottomTabParamList = {
   [BottomTabRoutes.HOME]: undefined;
   [BottomTabRoutes.MORE]: undefined;
-  [BottomTabRoutes.PLAYER]: undefined;
 };
 
 export enum MainStackRoutes {
-  HOME = 'Home',
+  HOME = 'Main',
   PLAYER = 'Player',
 }
 
 export type MainStackParamList = {
   [MainStackRoutes.HOME]: undefined;
   [MainStackRoutes.PLAYER]: undefined;
-};
-
-export type AppNavigatorRouteParamList = {
-  [AppNavigatorRoutes.AUTHENTICATION]: undefined;
-  [AppNavigatorRoutes.MAIN]: undefined;
 };

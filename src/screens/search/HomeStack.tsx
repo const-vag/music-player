@@ -6,7 +6,7 @@ import React from 'react';
 import { ContentStack } from '../content/ContentStack';
 import { HomeScreen } from './HomeScreen';
 import { HomeRoutes, SearchStackParamList } from './types';
-import SearchScreen from './SearchScreen';
+import SearchScreen from './search/SearchScreen';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 

@@ -4,7 +4,7 @@ import { Box } from '../ui-kit/Box/Box';
 import { usePlayerStore } from '../shared/stores/player/usePlayerStore';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { BottomTabParamList, BottomTabRoutes } from './types';
+import { MainStackParamList, MainStackRoutes } from './types';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableOpacity, Image } from 'react-native';
 import { Typography } from '../ui-kit/Typography';
@@ -15,7 +15,7 @@ const IMAGE_SIZE = 50;
 
 export const MiniPlayer = () => {
   const theme = useTheme();
-  const navigation = useNavigation<StackNavigationProp<BottomTabParamList>>();
+  const navigation = useNavigation<StackNavigationProp<MainStackParamList>>();
   const { bottom } = useSafeAreaInsets();
 
   const { song, isPlaying } = usePlayerStore();
@@ -41,7 +41,7 @@ export const MiniPlayer = () => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(BottomTabRoutes.PLAYER)}
+      onPress={() => navigation.navigate(MainStackRoutes.PLAYER)}
     >
       <Box
         direction="row"

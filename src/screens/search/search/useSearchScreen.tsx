@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDebounce } from '../../shared/hooks/useDebounce';
-import { useSearchQuery } from '../../api/hooks/search.query';
-import { SongWithAlbumImage } from '../../api/requests/songs.api';
-import { ContentRequiredInfo } from '../../api/requests/search.api';
+import { useDebounce } from '../../../shared/hooks/useDebounce';
+import { useSearchQuery } from '../../../api/hooks/search.query';
+import { SongWithAlbumImage } from '../../../api/requests/songs.api';
+import { ContentRequiredInfo } from '../../../api/requests/search.api';
 
 export const useSearchScreen = () => {
   const [keyword, setKeyword] = useState('');

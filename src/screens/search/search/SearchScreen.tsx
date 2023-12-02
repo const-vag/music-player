@@ -1,14 +1,14 @@
 import React from 'react';
 import { SectionList } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { isSongWithAlbumImage } from '../../api/requests/songs.api';
-import { Container } from '../../ui-kit/Container';
-import { Typography } from '../../ui-kit/Typography';
-import { useContentNavigators } from '../content/useContentNavigators';
-import { SearchContentResult } from './components/SearchContentResult';
-import { SearchSongResult } from './components/SearchSongResult';
+import { isSongWithAlbumImage } from '../../../api/requests/songs.api';
+import { Container } from '../../../ui-kit/Container';
+import { Typography } from '../../../ui-kit/Typography';
+import { useContentNavigators } from '../../content/useContentNavigators';
+import { SearchContentResult } from '../components/SearchContentResult';
+import { SearchSongResult } from '../components/SearchSongResult';
 import { useSearchScreen } from './useSearchScreen';
-import { Spacer } from '../../ui-kit/Spacer';
+import { Spacer } from '../../../ui-kit/Spacer';
 
 const SearchScreen = () => {
   const { delayedFn, searchResultSections } = useSearchScreen();
