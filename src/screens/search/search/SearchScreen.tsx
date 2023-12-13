@@ -5,14 +5,27 @@ import { isSongWithAlbumImage } from '../../../api/requests/songs.api';
 import { Container } from '../../../ui-kit/Container';
 import { Typography } from '../../../ui-kit/Typography';
 import { useContentNavigators } from '../../content/useContentNavigators';
-import { SearchContentResult } from '../components/SearchContentResult';
-import { SearchSongResult } from '../components/SearchSongResult';
+import { SearchContentResult } from './components/SearchContentResult';
+import { SearchSongResult } from './components/SearchSongResult';
 import { useSearchScreen } from './useSearchScreen';
 import { Spacer } from '../../../ui-kit/Spacer';
+import { useRecentlySearched } from '../../../shared/hooks/useRecentlySearched';
+import { ContentRequiredInfo } from '../../../api/requests/search.api';
 
 const SearchScreen = () => {
   const { delayedFn, searchResultSections } = useSearchScreen();
   const { goToAlbum, goToArtist } = useContentNavigators();
+  const { write } = useRecentlySearched();
+
+  const handleOnArtistPress = async (artist: ContentRequiredInfo) => {
+    await write.artist(artist);
+    goToArtist(artist.id);
+  };
+
+  const handleOnAlbumPress = async (artist: ContentRequiredInfo) => {
+    await write.album(artist);
+    goToAlbum(artist.id);
+  };
 
   return (
     <Container expand centered={false}>
@@ -50,7 +63,7 @@ const SearchScreen = () => {
           if (title === 'Artists')
             return (
               <SearchContentResult
-                onPress={() => goToArtist(item.id)}
+                onPress={() => handleOnArtistPress(item)}
                 item={item}
               />
             );
@@ -58,7 +71,7 @@ const SearchScreen = () => {
           if (title === 'Albums')
             return (
               <SearchContentResult
-                onPress={() => goToAlbum(item.id)}
+                onPress={() => handleOnAlbumPress(item)}
                 item={item}
               />
             );
