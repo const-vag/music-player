@@ -10,6 +10,7 @@ export const useHomeScreen = () => {
     navigation.navigate(HomeRoutes.SEARCH);
   };
 
+  // TODO: Delete
   const goToHawkTsibouki = () => {
     /* 
       Nesting navigation guide:

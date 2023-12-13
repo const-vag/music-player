@@ -37,7 +37,6 @@ export const BottomTabNavigator = () => {
     }, 2000);
     return () => clearTimeout(timer);
   }, [hide, isVisible]);
-
   return (
     <>
       <BottomNavigation

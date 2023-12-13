@@ -5,6 +5,7 @@ import { IconButton } from 'react-native-paper';
 import { Box, BoxProps } from './Box/Box';
 import { Spacer } from './Spacer';
 import { uiVariables } from './variables';
+import { usePlayerStore } from '../shared/stores/player/usePlayerStore';
 
 type ContainerProps = BoxProps & {
   onClose?: () => void;
@@ -19,6 +20,8 @@ export const Container = (props: ContainerProps) => {
     topAwareSpacer = true,
     variant = 'screen',
   } = props;
+
+  const { song } = usePlayerStore();
 
   return (
     <Box style={{ flex: 1 }}>
@@ -43,7 +46,8 @@ export const Container = (props: ContainerProps) => {
         style={styles.container}
       >
         {children}
-        <Spacer size={70} />
+        {/* we need this spacer for Mini player */}
+        {song ? <Spacer size={70} /> : null}
       </Box>
     </Box>
   );
