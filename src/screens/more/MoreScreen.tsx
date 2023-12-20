@@ -90,13 +90,6 @@ const AddToProfileSection = () => {
           console.log('playlist created');
         }}
       />
-      <Menu.Item
-        title="Add auto playlist"
-        leadingIcon="playlist-star"
-        onPress={() => {
-          console.log('auto playlist created');
-        }}
-      />
     </Menu>
   );
 };
