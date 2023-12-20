@@ -1,20 +1,22 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from 'react-native-paper';
-import { useUserQuery } from '../../api/hooks/user.query';
+import { useFollowedArtistsQuery } from '../../api/hooks/user.query';
 import { useRecentlySearched } from '../../shared/hooks/useRecentlySearched';
 import { Container } from '../../ui-kit/Container';
-import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 import { FollowedArtistsSection } from './components/FollowedArtistsSection';
 import { useHomeScreen } from './useHomeScreen';
+import { RecentlySearchedSection } from './components/RecentlySearchedSection';
 
 export const HomeScreen = () => {
   const { goToSearchPage } = useHomeScreen();
-  const { data: user, isSuccess, isLoading } = useUserQuery();
-  const { artists } = useRecentlySearched();
-
-  if (!isSuccess || isLoading) return <LoadingScreen />;
+  const { data: followedArtists } = useFollowedArtistsQuery();
+  const {
+    artists: recentlySearchedArtists,
+    songs: recentlySearchedSongs,
+    albums: recentlySearchedAlbums,
+  } = useRecentlySearched();
 
   return (
     <Container expand centered={false}>
@@ -32,16 +34,13 @@ export const HomeScreen = () => {
           Search
         </Button>
         <Spacer size={30} />
-        <FollowedArtistsSection followedArtists={user.followedArtists} />
+        <RecentlySearchedSection
+          albums={recentlySearchedAlbums}
+          artists={recentlySearchedArtists}
+          songs={recentlySearchedSongs}
+        />
         <Spacer size={30} />
-        <Button
-          onPress={() => {
-            console.log(artists);
-          }}
-        >
-          Check
-        </Button>
-        {/* <FavouriteSongsSection favouriteSongs={user.favoriteSongs} /> */}
+        <FollowedArtistsSection followedArtists={followedArtists} />
       </ScrollView>
     </Container>
   );

@@ -47,7 +47,7 @@ export const Container = (props: ContainerProps) => {
       >
         {children}
         {/* we need this spacer for Mini player */}
-        {song ? <Spacer size={70} /> : null}
+        {song ? <Spacer size={70} /> : <Spacer size={20} />}
       </Box>
     </Box>
   );

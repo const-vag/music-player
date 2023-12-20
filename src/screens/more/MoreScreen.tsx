@@ -5,7 +5,10 @@ import { AUTH_TOKEN_KEY } from '../../shared/hooks/useAuthToken';
 import { Container } from '../../ui-kit/Container';
 import { ASYNC_STORAGE_SONG_KEY } from '../../shared/stores/player/usePlayerControls';
 import { asyncStorage } from '../../shared/utils/asyncStorage';
-import { useUserQuery } from '../../api/hooks/user.query';
+import {
+  useFavouriteSongsQuery,
+  useUserQuery,
+} from '../../api/hooks/user.query';
 import { Box } from '../../ui-kit/Box/Box';
 import { TouchableOpacity } from 'react-native';
 import { Typography } from '../../ui-kit/Typography';
@@ -15,6 +18,7 @@ import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 export const More = () => {
   const { data: user, isLoading, isSuccess } = useUserQuery();
 
+  console.log('more screen rendered');
   if (!isSuccess || isLoading) return <LoadingScreen />;
 
   return (
@@ -54,9 +58,9 @@ const UserSection = ({ user }: UserSectionProps) => {
           title="Logout"
           leadingIcon="logout"
           onPress={async () => {
-            await remove(ASYNC_STORAGE_SONG_KEY);
             await remove(AUTH_TOKEN_KEY);
-            queryClient.resetQueries({ queryKey: [AUTH_TOKEN_KEY] });
+            await queryClient.resetQueries({ queryKey: [AUTH_TOKEN_KEY] });
+            await remove(ASYNC_STORAGE_SONG_KEY);
           }}
         />
       </Menu>

@@ -6,7 +6,7 @@ import { Box } from '../../../ui-kit/Box/Box';
 import { Typography } from '../../../ui-kit/Typography';
 
 type FollowedArtistsSectionProps = {
-  followedArtists: Artist[];
+  followedArtists: Artist[] | undefined;
 };
 
 const IMAGE_SIZE = 50;
@@ -14,6 +14,8 @@ const IMAGE_SIZE = 50;
 export const FollowedArtistsSection = ({
   followedArtists,
 }: FollowedArtistsSectionProps) => {
+  if (!followedArtists) return null;
+
   const firstNineFollowed = followedArtists.slice(0, 9);
 
   return (
