@@ -4,16 +4,13 @@ import { Button, Surface } from 'react-native-paper';
 import { Artist } from '../../../api/requests/artists.api';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Typography } from '../../../ui-kit/Typography';
-
-type FollowedArtistsSectionProps = {
-  followedArtists: Artist[] | undefined;
-};
+import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
 
 const IMAGE_SIZE = 50;
 
-export const FollowedArtistsSection = ({
-  followedArtists,
-}: FollowedArtistsSectionProps) => {
+export const FollowedArtistsSection = () => {
+  const { data: followedArtists } = useFollowedArtistsQuery();
+
   if (!followedArtists) return null;
 
   const firstNineFollowed = followedArtists.slice(0, 9);

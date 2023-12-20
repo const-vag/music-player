@@ -5,13 +5,12 @@ import { useFollowedArtistsQuery } from '../../api/hooks/user.query';
 import { useRecentlySearched } from '../../shared/hooks/useRecentlySearched';
 import { Container } from '../../ui-kit/Container';
 import { Spacer } from '../../ui-kit/Spacer';
-import { FollowedArtistsSection } from './components/FollowedArtistsSection';
+import { FollowedArtistsSection } from '../more/components/FollowedArtistsSection';
 import { useHomeScreen } from './useHomeScreen';
 import { RecentlySearchedSection } from './components/RecentlySearchedSection';
 
 export const HomeScreen = () => {
   const { goToSearchPage } = useHomeScreen();
-  const { data: followedArtists } = useFollowedArtistsQuery();
   const {
     artists: recentlySearchedArtists,
     songs: recentlySearchedSongs,
@@ -40,7 +39,6 @@ export const HomeScreen = () => {
           songs={recentlySearchedSongs}
         />
         <Spacer size={30} />
-        <FollowedArtistsSection followedArtists={followedArtists} />
       </ScrollView>
     </Container>
   );
