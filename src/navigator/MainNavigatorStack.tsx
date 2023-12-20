@@ -6,6 +6,7 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import { BottomTabNavigator } from './BottomTabNavigator';
+import { ContentStack } from '../screens/content/ContentStack';
 
 const Stack = createStackNavigator<MainStackParamList>();
 export const MainNavigatorStack = () => {
@@ -24,6 +25,15 @@ export const MainNavigatorStack = () => {
         }}
         name={MainStackRoutes.PLAYER}
         component={Player}
+      />
+      <Stack.Screen
+        options={{
+          ...TransitionPresets.SlideFromRightIOS,
+          headerShown: false,
+          gestureEnabled: true,
+        }}
+        name={MainStackRoutes.CONTENT}
+        component={ContentStack}
       />
     </Stack.Navigator>
   );

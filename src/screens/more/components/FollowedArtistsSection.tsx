@@ -1,10 +1,9 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Button, Surface } from 'react-native-paper';
-import { Artist } from '../../../api/requests/artists.api';
+import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Typography } from '../../../ui-kit/Typography';
-import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
 
 const IMAGE_SIZE = 50;
 

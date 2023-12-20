@@ -3,10 +3,9 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import React from 'react';
-import { ContentStack } from '../content/ContentStack';
 import { HomeScreen } from './HomeScreen';
-import { HomeRoutes, SearchStackParamList } from './types';
 import SearchScreen from './search/SearchScreen';
+import { HomeRoutes, SearchStackParamList } from './types';
 
 const Stack = createStackNavigator<SearchStackParamList>();
 
@@ -29,15 +28,6 @@ export const HomeStack = () => {
         }}
         name={HomeRoutes.SEARCH}
         component={SearchScreen}
-      />
-      <Stack.Screen
-        options={{
-          ...TransitionPresets.SlideFromRightIOS,
-          headerShown: false,
-          gestureEnabled: true,
-        }}
-        name={HomeRoutes.CONTENT}
-        component={ContentStack}
       />
     </Stack.Navigator>
   );

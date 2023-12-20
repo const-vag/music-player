@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
-import { HomeRoutes, SearchStackParamList } from '../search/types';
 import { ContentRoutes } from './types';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList, MainStackRoutes } from '../../navigator/types';
 
 export const useContentNavigators = () => {
-  const navigation = useNavigation<StackNavigationProp<SearchStackParamList>>();
+  const navigation = useNavigation<StackNavigationProp<MainStackParamList>>();
 
   const goToAlbum = (id: number) => {
-    navigation.navigate(HomeRoutes.CONTENT, {
+    navigation.navigate(MainStackRoutes.CONTENT, {
       screen: ContentRoutes.ALBUM,
       params: {
         id,
@@ -16,7 +16,7 @@ export const useContentNavigators = () => {
   };
 
   const goToArtist = (id: number) => {
-    navigation.navigate(HomeRoutes.CONTENT, {
+    navigation.navigate(MainStackRoutes.CONTENT, {
       screen: ContentRoutes.ARTIST,
       params: {
         id,
