@@ -4,7 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { Keyboard, StyleSheet } from 'react-native';
 import { AnimatedFAB, FAB, Portal } from 'react-native-paper';
 import { SongWithAlbumImage } from '../api/requests/songs.api';
-import { useMiniPlayerStore } from '../shared/stores/player/MiniPlayerStore';
+import {
+  useMiniPlayerControls,
+  useMiniPlayerStore,
+} from '../shared/stores/player/MiniPlayerStore';
 import { usePlayerStore } from '../shared/stores/player/usePlayerStore';
 import { MainStackParamList, MainStackRoutes } from './types';
 import { usePlayerControls } from '../shared/stores/player/usePlayerControls';
@@ -44,14 +47,18 @@ type MiniPlayerProps = {
 
 const MiniPlayerContent = (props: MiniPlayerProps) => {
   const { song, isKeyboardVisible } = props;
-  const { isVisible, isMinimized } = useMiniPlayerStore();
-  const [state, setState] = React.useState<{ open: boolean }>({ open: false });
   const navigation = useNavigation<StackNavigationProp<MainStackParamList>>();
+
+  const [state, setState] = React.useState<{ open: boolean }>({ open: false });
+
+  const { data: nextSong } = useNextSongQuery(song?.id);
+
+  const { isPlaying } = usePlayerStore();
+  const { isVisible, isMinimized } = useMiniPlayerStore();
+
   const { play, pause, updateAndPlaySong } = usePlayerControls();
   const { show } = useSnackbarControls();
-  const { isPlaying } = usePlayerStore();
-  const { data: nextSong } = useNextSongQuery(song?.id);
-  const [minimized, setMinimized] = useState(false);
+  const { maximize, minimize } = useMiniPlayerControls();
 
   const openExtendedPlayer = () => navigation.navigate(MainStackRoutes.PLAYER);
 
@@ -63,27 +70,22 @@ const MiniPlayerContent = (props: MiniPlayerProps) => {
     }
   };
 
-  useEffect(() => {
-    setMinimized(isMinimized);
-  }, [isMinimized]);
-
   return (
     <Portal>
       <AnimatedFAB
         icon={isPlaying ? 'pause' : 'play'}
         label={song.name}
         extended={false}
-        onLongPress={() => setMinimized((prev) => !prev)}
+        onLongPress={() => (isMinimized ? maximize() : minimize())}
         onPress={togglePausePlay}
-        visible={minimized}
-        animateFrom={'right'}
+        visible={isMinimized}
         style={[styles.collapsedFab]}
       />
       <FAB.Group
         style={[styles.fabContainer]}
         open={state.open}
-        visible={isVisible && !isKeyboardVisible && !minimized}
-        onLongPress={() => setMinimized(true)}
+        visible={isVisible && !isKeyboardVisible && !isMinimized}
+        onLongPress={minimize}
         icon={'music-note'}
         label={song.name}
         actions={[
@@ -95,7 +97,7 @@ const MiniPlayerContent = (props: MiniPlayerProps) => {
           {
             icon: 'minus',
             label: 'Minimize',
-            onPress: () => setMinimized(false),
+            onPress: minimize,
           },
           {
             icon: 'skip-next',
