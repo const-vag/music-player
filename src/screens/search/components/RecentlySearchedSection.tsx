@@ -21,6 +21,12 @@ export const RecentlySearchedSection = ({
   albums,
   artists,
 }: FavouriteSongsSectionProps) => {
+  const hasRecentlySearched = Boolean(
+    songs?.length || albums?.length || artists?.length
+  );
+
+  if (!hasRecentlySearched) return null;
+
   return (
     <Box style={{ rowGap: 10 }} centered={false}>
       <Typography variant="titleMedium">Recent Searches</Typography>
