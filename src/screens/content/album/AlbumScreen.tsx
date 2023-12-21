@@ -2,12 +2,12 @@ import React from 'react';
 import { FlatList, Image, ListRenderItemInfo } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import { Song } from '../../../api/requests/songs.api';
+import { Box } from '../../../ui-kit/Box/Box';
 import { Container } from '../../../ui-kit/Container';
+import { Spacer } from '../../../ui-kit/Spacer';
 import { Typography } from '../../../ui-kit/Typography';
 import { SongCard } from './components/SongCard';
 import { useAlbumScreen } from './useAlbumScreen';
-import { Spacer } from '../../../ui-kit/Spacer';
-import { Box } from '../../../ui-kit/Box/Box';
 
 const IMAGE_SIZE = 200;
 

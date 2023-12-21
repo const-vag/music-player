@@ -1,19 +1,19 @@
 import React from 'react';
 import { Dimensions, Image, SectionList } from 'react-native';
 import { ActivityIndicator, Button, useTheme } from 'react-native-paper';
+import {
+  useFollowMutation,
+  useUnfollowMutation,
+} from '../../../api/hooks/artists.query';
 import { Album } from '../../../api/requests/albums.api';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Container } from '../../../ui-kit/Container';
 import { Spacer } from '../../../ui-kit/Spacer';
 import { Typography } from '../../../ui-kit/Typography';
 import { uiVariables } from '../../../ui-kit/variables';
+import { useContentNavigators } from '../useContentNavigators';
 import { AlbumCard } from './components/AlbumCard';
 import { useArtistScreen } from './useArtistScreen';
-import {
-  useFollowMutation,
-  useUnfollowMutation,
-} from '../../../api/hooks/artists.query';
-import { useContentNavigators } from '../useContentNavigators';
 
 export const Artist = () => {
   const theme = useTheme();

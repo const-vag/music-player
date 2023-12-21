@@ -22,8 +22,6 @@ const routes: BaseRoute[] = [
 ];
 
 export const BottomTabNavigator = () => {
-  const { isVisible, message } = useSnackbarStore();
-  const { hide } = useSnackbarControls();
   const [index, setIndex] = React.useState(0);
 
   const renderScene = BottomNavigation.SceneMap({
@@ -31,12 +29,7 @@ export const BottomTabNavigator = () => {
     [BottomTabRoutes.MORE]: More,
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      hide();
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, [hide, isVisible]);
+
   return (
     <>
       <BottomNavigation
@@ -44,16 +37,8 @@ export const BottomTabNavigator = () => {
         onIndexChange={setIndex}
         renderScene={renderScene}
       />
-      <MiniPlayer />
-      <Snackbar
-        visible={isVisible}
-        onDismiss={hide}
-        action={{
-          label: 'OK',
-        }}
-      >
-        {message}
-      </Snackbar>
+
+
     </>
   );
 };

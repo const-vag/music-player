@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { useNextSongQuery } from '../../api/hooks/songs.query';
+import { useMiniPlayerControls } from '../../shared/stores/player/MiniPlayerStore';
 import { usePlayerControls } from '../../shared/stores/player/usePlayerControls';
 import { usePlayerStore } from '../../shared/stores/player/usePlayerStore';
 import { useSnackbarControls } from '../../shared/stores/snackbar/useSnackbarControls';
@@ -17,6 +18,12 @@ export const Player = () => {
   const { song: currentSong, isPlaying } = usePlayerStore();
   const { data: nextSong } = useNextSongQuery(currentSong?.id);
   const { show } = useSnackbarControls();
+  const { hideMiniPlayer, showMiniPlayer } = useMiniPlayerControls();
+
+  useEffect(() => {
+    hideMiniPlayer();
+    return () => showMiniPlayer();
+  }, [showMiniPlayer, hideMiniPlayer]);
 
   if (!currentSong) {
     navigation.goBack();
