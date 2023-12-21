@@ -71,7 +71,7 @@ const SongsSection = ({ songs }: SongsSectionProps) => {
                     source={{ uri: song.albumImage }}
                   />
                   <Typography truncate>{song.name}</Typography>
-                  <IconButton size={15} icon="play" />
+                  <IconButton size={15} icon="music-note" />
                 </Box>
               </Surface>
             </TouchableOpacity>
