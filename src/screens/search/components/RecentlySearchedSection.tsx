@@ -1,26 +1,23 @@
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
-import { IconButton, Surface } from 'react-native-paper';
 import { ContentRequiredInfo } from '../../../api/requests/search.api';
 import { SongWithAlbumImage } from '../../../api/requests/songs.api';
+import { usePlayerControls } from '../../../shared/stores/player/usePlayerControls';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Typography } from '../../../ui-kit/Typography';
 import { useContentNavigators } from '../../content/useContentNavigators';
-import { usePlayerControls } from '../../../shared/stores/player/usePlayerControls';
+import { RecentlySearchedContentCard } from './RecentlySearchedContentCard';
 
-type FavouriteSongsSectionProps = {
+type FavoriteSongsSectionProps = {
   songs: SongWithAlbumImage[] | undefined;
   albums: ContentRequiredInfo[] | undefined;
   artists: ContentRequiredInfo[] | undefined;
 };
 
-const IMAGE_SIZE = 50;
-
 export const RecentlySearchedSection = ({
   songs,
   albums,
   artists,
-}: FavouriteSongsSectionProps) => {
+}: FavoriteSongsSectionProps) => {
   const hasRecentlySearched = Boolean(
     songs?.length || albums?.length || artists?.length
   );
@@ -51,31 +48,12 @@ const SongsSection = ({ songs }: SongsSectionProps) => {
       <Typography variant="titleSmall">Songs</Typography>
       <Box centered={false} style={{ flexWrap: 'wrap' }} direction="row">
         {songs?.map((song) => (
-          <Box p={5} style={{ width: '50%' }} key={song.id}>
-            <TouchableOpacity
-              style={{ width: '100%' }}
-              onPress={() => updateAndPlaySong(song)}
-            >
-              <Surface style={{ width: '100%' }} elevation={4}>
-                <Box
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    columnGap: 15,
-                  }}
-                  direction="row"
-                  transparent
-                >
-                  <Image
-                    style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
-                    source={{ uri: song.albumImage }}
-                  />
-                  <Typography truncate>{song.name}</Typography>
-                  <IconButton size={15} icon="music-note" />
-                </Box>
-              </Surface>
-            </TouchableOpacity>
-          </Box>
+          <RecentlySearchedContentCard
+            imageSrc={song.albumImage}
+            name={song.name}
+            onPress={() => updateAndPlaySong(song)}
+            key={song.id}
+          />
         ))}
       </Box>
     </Box>
@@ -95,30 +73,12 @@ const AlbumsSection = ({ albums }: AlbumsSectionProps) => {
       <Typography variant="titleSmall">Albums</Typography>
       <Box centered={false} style={{ flexWrap: 'wrap' }} direction="row">
         {albums?.map((album) => (
-          <Box p={5} style={{ width: '50%' }} key={album.id}>
-            <TouchableOpacity
-              style={{ width: '100%' }}
-              onPress={() => goToAlbum(album.id)}
-            >
-              <Surface style={{ width: '100%' }} elevation={4}>
-                <Box
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    columnGap: 15,
-                  }}
-                  direction="row"
-                  transparent
-                >
-                  <Image
-                    style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
-                    source={{ uri: album.image }}
-                  />
-                  <Typography truncate>{album.name}</Typography>
-                </Box>
-              </Surface>
-            </TouchableOpacity>
-          </Box>
+          <RecentlySearchedContentCard
+            imageSrc={album.image}
+            name={album.name}
+            onPress={() => goToAlbum(album.id)}
+            key={album.id}
+          />
         ))}
       </Box>
     </Box>
@@ -138,30 +98,12 @@ const ArtistSection = ({ artists }: ArtistsSectionProps) => {
       <Typography variant="titleSmall">Artists</Typography>
       <Box centered={false} style={{ flexWrap: 'wrap' }} direction="row">
         {artists?.map((artist) => (
-          <Box p={5} style={{ width: '50%' }} key={artist.id}>
-            <TouchableOpacity
-              style={{ width: '100%' }}
-              onPress={() => goToArtist(artist.id)}
-            >
-              <Surface style={{ width: '100%' }} elevation={4}>
-                <Box
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    columnGap: 15,
-                  }}
-                  direction="row"
-                  transparent
-                >
-                  <Image
-                    style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
-                    source={{ uri: artist.image }}
-                  />
-                  <Typography truncate>{artist.name}</Typography>
-                </Box>
-              </Surface>
-            </TouchableOpacity>
-          </Box>
+          <RecentlySearchedContentCard
+            imageSrc={artist.image}
+            name={artist.name}
+            onPress={() => goToArtist(artist.id)}
+            key={artist.id}
+          />
         ))}
       </Box>
     </Box>
