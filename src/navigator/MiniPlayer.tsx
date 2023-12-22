@@ -122,10 +122,10 @@ const MiniPlayerContent = (props: MiniPlayerProps) => {
 
 const styles = StyleSheet.create({
   fabContainer: {
-    paddingBottom: 70,
+    paddingBottom: 130,
   },
   collapsedFab: {
-    bottom: 86,
+    bottom: 146,
     right: 16,
     position: 'absolute',
   },
