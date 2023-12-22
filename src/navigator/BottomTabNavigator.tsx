@@ -1,44 +1,33 @@
-import React, { ComponentProps, useEffect } from 'react';
-import { BottomNavigation, Snackbar } from 'react-native-paper';
-import { More } from '../screens/more/MoreScreen';
+import React from 'react';
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+import { MoreStack } from '../screens/more/MoreStack';
 import { HomeStack } from '../screens/search/HomeStack';
-import { MiniPlayer } from './MiniPlayer';
+import { MaterialIcon } from '../ui-kit/MaterialIcon';
 import { BottomTabRoutes } from './types';
-import { useSnackbarStore } from '../shared/stores/snackbar/useSnackbarStore';
-import { useSnackbarControls } from '../shared/stores/snackbar/useSnackbarControls';
 
-type BaseRoute = ComponentProps<
-  typeof BottomNavigation
->['navigationState']['routes'][number];
-
-const routes: BaseRoute[] = [
-  {
-    key: BottomTabRoutes.HOME,
-    title: 'Home',
-    focusedIcon: 'home',
-    unfocusedIcon: 'home-outline',
-  },
-  { key: BottomTabRoutes.MORE, title: 'More', focusedIcon: 'dots-horizontal' },
-];
+const Tab = createMaterialBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
-  const [index, setIndex] = React.useState(0);
-
-  const renderScene = BottomNavigation.SceneMap({
-    [BottomTabRoutes.HOME]: HomeStack,
-    [BottomTabRoutes.MORE]: More,
-  });
-
-
   return (
-    <>
-      <BottomNavigation
-        navigationState={{ index, routes }}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
+    <Tab.Navigator>
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <MaterialIcon name={focused ? 'home' : 'home-outline'} />
+          ),
+          tabBarLabel: 'Home',
+        }}
+        name={BottomTabRoutes.HOME_TAB}
+        component={HomeStack}
       />
-
-
-    </>
+      <Tab.Screen
+        options={{
+          tabBarIcon: 'dots-horizontal',
+          tabBarLabel: 'More',
+        }}
+        name={BottomTabRoutes.MORE_TAB}
+        component={MoreStack}
+      />
+    </Tab.Navigator>
   );
 };
