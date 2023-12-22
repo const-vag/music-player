@@ -11,19 +11,12 @@ const Stack = createStackNavigator<SearchStackParamList>();
 
 export const HomeStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false, gestureEnabled: true }}
+    >
+      <Stack.Screen name={HomeRoutes.HOME} component={HomeScreen} />
       <Stack.Screen
         options={{
-          headerShown: false,
-          gestureEnabled: true,
-        }}
-        name={HomeRoutes.HOME}
-        component={HomeScreen}
-      />
-      <Stack.Screen
-        options={{
-          headerShown: false,
-          gestureEnabled: true,
           ...TransitionPresets.RevealFromBottomAndroid,
         }}
         name={HomeRoutes.SEARCH}

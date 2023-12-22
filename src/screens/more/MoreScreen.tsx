@@ -14,7 +14,7 @@ import { Spacer } from '../../ui-kit/Spacer';
 import { Typography } from '../../ui-kit/Typography';
 import { FollowedArtistsSection } from './components/FollowedArtistsSection';
 
-export const More = () => {
+export const MoreScreen = () => {
   const { data: user, isLoading, isSuccess } = useUserQuery();
 
   if (!isSuccess || isLoading) return <LoadingScreen />;

@@ -11,14 +11,13 @@ export type AppNavigatorRouteParamList = {
 };
 
 export enum BottomTabRoutes {
-  HOME = 'Home Tab',
-  MORE = 'More Tab',
-  PLAYER = 'Player',
+  HOME_TAB = 'Home Tab',
+  MORE_TAB = 'More Tab',
 }
 
 export type BottomTabParamList = {
-  [BottomTabRoutes.HOME]: undefined;
-  [BottomTabRoutes.MORE]: undefined;
+  [BottomTabRoutes.HOME_TAB]: undefined;
+  [BottomTabRoutes.MORE_TAB]: undefined;
 };
 
 export enum MainStackRoutes {
