@@ -38,17 +38,21 @@ export const Artist = () => {
     <Container topAwareSpacer={false} centered={false} ph={0}>
       <SectionList
         sections={separatedData}
-        renderSectionHeader={({ section: { title } }) => (
-          <Typography
-            style={{
-              paddingHorizontal: uiVariables.spacer.horizontalPadding,
-              marginVertical: 15,
-            }}
-            variant="titleLarge"
-          >
-            {title}
-          </Typography>
-        )}
+        renderSectionHeader={({ section: { title, data } }) => {
+          if (!data.length) return null;
+
+          return (
+            <Typography
+              style={{
+                paddingHorizontal: uiVariables.spacer.horizontalPadding,
+                marginVertical: 15,
+              }}
+              variant="titleLarge"
+            >
+              {title}
+            </Typography>
+          );
+        }}
         ListHeaderComponent={
           <Box style={{ alignItems: 'flex-start' }}>
             <Box>

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Typography } from '../../../ui-kit/Typography';
-import { Container } from '../../../ui-kit/Container';
-import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
-import { Box } from '../../../ui-kit/Box/Box';
 import { FlatList, ListRenderItemInfo } from 'react-native';
+import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
 import { Artist } from '../../../api/requests/artists.api';
+import { Container } from '../../../ui-kit/Container';
 import { Spacer } from '../../../ui-kit/Spacer';
+import { Typography } from '../../../ui-kit/Typography';
 import { FollowedArtistCard } from './FollowedArtistCard';
 
 export const FollowedArtistsScreen = () => {
