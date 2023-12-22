@@ -1,7 +1,15 @@
-import { useQueryClient } from '@tanstack/react-query';
+import { useIsMutating, useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
-import { Avatar, IconButton, Menu } from 'react-native-paper';
+import {
+  Avatar,
+  Button,
+  Dialog,
+  IconButton,
+  Menu,
+  Portal,
+  TextInput,
+} from 'react-native-paper';
 import { useUserQuery } from '../../api/hooks/user.query';
 import { User } from '../../api/requests/user.api';
 import { AUTH_TOKEN_KEY } from '../../shared/hooks/useAuthToken';
@@ -13,6 +21,7 @@ import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 import { Typography } from '../../ui-kit/Typography';
 import { FollowedArtistsSection } from './components/FollowedArtistsSection';
+import { useCreatePlaylistMutation } from '../../api/hooks/playlists.query';
 
 export const MoreScreen = () => {
   const { data: user, isLoading, isSuccess } = useUserQuery();
@@ -74,22 +83,83 @@ const UserSection = ({ user }: UserSectionProps) => {
 };
 
 const AddToProfileSection = () => {
-  const [visible, setVisible] = useState(false);
+  const [menuShown, setMenuShown] = useState(false);
+  const [enterDialogShown, setEnterDialogShown] = useState(false);
+  const { mutateAsync } = useCreatePlaylistMutation();
+  const isMutating = useIsMutating();
 
   return (
-    <Menu
-      anchorPosition="bottom"
-      visible={visible}
-      onDismiss={() => setVisible(false)}
-      anchor={<IconButton icon="plus" onPress={() => setVisible(true)} />}
-    >
-      <Menu.Item
-        title="Add playlist"
-        leadingIcon="playlist-plus"
-        onPress={() => {
-          console.log('playlist created');
-        }}
+    <>
+      <Menu
+        anchorPosition="bottom"
+        visible={menuShown}
+        onDismiss={() => setMenuShown(false)}
+        anchor={<IconButton icon="plus" onPress={() => setMenuShown(true)} />}
+      >
+        <Menu.Item
+          title="Add playlist"
+          leadingIcon="playlist-plus"
+          onPress={() => {
+            setEnterDialogShown(true);
+            setMenuShown(false);
+          }}
+        />
+      </Menu>
+      <EnterPlaylistDialog
+        loading={isMutating > 0}
+        onSubmit={(text: string) => mutateAsync(text)}
+        visible={enterDialogShown}
+        onHideDialog={() => setEnterDialogShown(false)}
       />
-    </Menu>
+    </>
+  );
+};
+
+type EnterPlaylistDialogProps = {
+  visible: boolean;
+  loading: boolean;
+  onHideDialog: () => void;
+  onSubmit: (text: string) => Promise<unknown>;
+};
+const EnterPlaylistDialog = ({
+  onHideDialog,
+  onSubmit,
+  visible,
+  loading,
+}: EnterPlaylistDialogProps) => {
+  const [name, setName] = useState('');
+
+  return (
+    <Portal>
+      <Dialog visible={visible} onDismiss={onHideDialog}>
+        <Dialog.Title>
+          <Typography>Add new playlist</Typography>
+        </Dialog.Title>
+        <Dialog.Content>
+          <TextInput
+            onChangeText={(i) => setName(i)}
+          style={{ width: '100%' }}
+            autoFocus
+            mode="outlined"
+            label="Name"
+            placeholder="Enter a name for your playlist"
+          />
+        </Dialog.Content>
+        <Dialog.Actions>
+          <Button onPress={onHideDialog}>Cancel</Button>
+          <Button
+            loading={loading}
+            onPress={async () => {
+              if (name.length >= 2) {
+                await onSubmit(name);
+                onHideDialog();
+              }
+            }}
+          >
+            Done
+          </Button>
+        </Dialog.Actions>
+      </Dialog>
+    </Portal>
   );
 };

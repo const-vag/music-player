@@ -47,3 +47,25 @@ export const unlikeSong = async (id: number) => {
 
   return await axios.post(`${songsUrl}/${id}/unlike`);
 };
+
+export const addSongToPlaylist = async (properties: {
+  songId: number;
+  playlistId: number;
+}) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return await axios.post(
+    `${songsUrl}/${properties.songId}/add_to_playlist/${properties.playlistId}`
+  );
+};
+
+export const removeSongFromPlaylist = async (properties: {
+  songId: number;
+  playlistId: number;
+}) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return await axios.post(
+    `${songsUrl}/${properties.songId}/remove_from_playlist/${properties.playlistId}`
+  );
+};

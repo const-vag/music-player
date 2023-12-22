@@ -43,7 +43,6 @@ export const Container = (props: ContainerProps) => {
         style={styles.container}
       >
         {children}
-        <Spacer />
       </Box>
     </Box>
   );

@@ -6,14 +6,19 @@ import { Container } from '../../ui-kit/Container';
 import { Spacer } from '../../ui-kit/Spacer';
 import { RecentlySearchedSection } from './components/RecentlySearchedSection';
 import { useHomeScreen } from './useHomeScreen';
+import { useUserQuery } from '../../api/hooks/user.query';
+import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 
 export const HomeScreen = () => {
   const { goToSearchPage } = useHomeScreen();
+  const { isLoading } = useUserQuery();
   const {
     artists: recentlySearchedArtists,
     songs: recentlySearchedSongs,
     albums: recentlySearchedAlbums,
   } = useRecentlySearched();
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <Container expand centered={false}>

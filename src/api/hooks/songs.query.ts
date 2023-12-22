@@ -7,6 +7,7 @@ import {
   unlikeSong,
   getNextSong,
   SongWithAlbumImage,
+  addSongToPlaylist,
 } from '../requests/songs.api';
 import { ErrorResponse } from '../shared-types';
 
@@ -74,6 +75,25 @@ export const useUnlikeSongMutation = () => {
     onError: (error) => {
       if (isAxiosError<ErrorResponse>(error))
         console.log('Unlike song mutation failed: ', error.response?.data);
+    },
+  });
+};
+
+export const useAddSongToPlaylistMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: addSongToPlaylist,
+    onSuccess: async () => {
+      console.log('add song to playlist mutation success');
+      queryClient.refetchQueries({ stale: true });
+    },
+    onError: (error) => {
+      if (isAxiosError<ErrorResponse>(error))
+        console.log(
+          'add song to playlist mutation failed: ',
+          error.response?.data
+        );
     },
   });
 };
