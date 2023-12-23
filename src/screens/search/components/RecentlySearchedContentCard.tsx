@@ -20,7 +20,7 @@ export const RecentlySearchedContentCard = (
   return (
     <Box p={5} style={{ width: '50%' }}>
       <TouchableOpacity style={{ width: '100%' }} onPress={onPress}>
-        <Surface style={{ width: '100%' }} elevation={4}>
+        <Surface style={{ width: '100%', borderRadius: 5 }} elevation={4}>
           <Box
             style={{
               alignItems: 'center',
@@ -31,7 +31,12 @@ export const RecentlySearchedContentCard = (
             transparent
           >
             <Image
-              style={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
+              style={{
+                width: IMAGE_SIZE,
+                height: IMAGE_SIZE,
+                borderTopLeftRadius: 5,
+                borderBottomLeftRadius: 5,
+              }}
               source={{ uri: imageSrc }}
             />
             <Typography truncate>{name}</Typography>
