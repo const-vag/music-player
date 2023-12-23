@@ -6,8 +6,9 @@ import { Box } from '../../../ui-kit/Box/Box';
 import { Container } from '../../../ui-kit/Container';
 import { Spacer } from '../../../ui-kit/Spacer';
 import { Typography } from '../../../ui-kit/Typography';
-import { SongCard } from './components/SongCard';
+// import { SongCard } from './components/SongCard';
 import { useAlbumScreen } from './useAlbumScreen';
+import { SongCard } from '../../../shared/components/SongCard';
 
 const IMAGE_SIZE = 200;
 
@@ -39,7 +40,7 @@ export const Album = () => {
         data={album.songs}
         keyExtractor={keyExtractor}
         renderItem={({ item }: ListRenderItemInfo<Song>) => (
-          <SongCard song={item} albumImage={album.image} />
+          <SongCard song={{ ...item, albumImage: album.image }} />
         )}
       />
     </Container>

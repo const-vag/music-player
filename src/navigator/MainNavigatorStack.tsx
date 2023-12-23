@@ -11,6 +11,7 @@ import { MiniPlayer } from './MiniPlayer';
 import { Snackbar } from 'react-native-paper';
 import { useSnackbarStore } from '../shared/stores/snackbar/useSnackbarStore';
 import { useSnackbarControls } from '../shared/stores/snackbar/useSnackbarControls';
+import { PlaylistScreen } from '../screens/playlist/PlaylistScreen';
 
 const Stack = createStackNavigator<MainStackParamList>();
 export const MainNavigatorStack = () => {
@@ -26,29 +27,27 @@ export const MainNavigatorStack = () => {
 
   return (
     <>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          ...TransitionPresets.SlideFromRightIOS,
+
+          headerShown: false,
+          gestureEnabled: true,
+        }}
+      >
         <Stack.Screen
-          options={{ headerShown: false }}
           name={MainStackRoutes.HOME}
           component={BottomTabNavigator}
         />
         <Stack.Screen
-          options={{
-            ...TransitionPresets.ModalPresentationIOS,
-            headerShown: false,
-            gestureEnabled: true,
-          }}
+          options={{ ...TransitionPresets.ModalPresentationIOS }}
           name={MainStackRoutes.PLAYER}
           component={Player}
         />
+        <Stack.Screen name={MainStackRoutes.CONTENT} component={ContentStack} />
         <Stack.Screen
-          options={{
-            ...TransitionPresets.SlideFromRightIOS,
-            headerShown: false,
-            gestureEnabled: true,
-          }}
-          name={MainStackRoutes.CONTENT}
-          component={ContentStack}
+          name={MainStackRoutes.PLAYLIST}
+          component={PlaylistScreen}
         />
       </Stack.Navigator>
       <Snackbar

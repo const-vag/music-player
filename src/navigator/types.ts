@@ -24,6 +24,7 @@ export enum MainStackRoutes {
   HOME = 'Main',
   PLAYER = 'Player',
   CONTENT = 'Content',
+  PLAYLIST = 'Playlist',
 }
 
 export type MainStackParamList = {
@@ -32,5 +33,8 @@ export type MainStackParamList = {
   [MainStackRoutes.CONTENT]: {
     screen: ContentRoutes;
     params: ContentParamList[ContentRoutes];
+  };
+  [MainStackRoutes.PLAYLIST]: {
+    id: number;
   };
 };

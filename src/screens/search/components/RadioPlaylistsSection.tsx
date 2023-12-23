@@ -3,9 +3,11 @@ import { useRadioPlaylistsQuery } from '../../../api/hooks/playlists.query';
 import { Box } from '../../../ui-kit/Box/Box';
 import { Typography } from '../../../ui-kit/Typography';
 import RadioPlaylistContentCard from './RadioPlaylistContentCard';
+import { usePlaylistNavigators } from '../../playlist/usePlaylistNavigator';
 
 export const RadioPlaylistsSection = () => {
   const { data: radioPlaylists, isSuccess } = useRadioPlaylistsQuery();
+  const { goToPlaylist } = usePlaylistNavigators();
 
   if (!isSuccess) return null;
 
@@ -16,7 +18,7 @@ export const RadioPlaylistsSection = () => {
         {radioPlaylists?.map((playlist) => (
           <RadioPlaylistContentCard
             name={playlist.name}
-            onPress={() => console.log('radio playlist pressed')}
+            onPress={() => goToPlaylist(playlist.id)}
             key={playlist.id}
           />
         ))}

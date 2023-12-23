@@ -11,6 +11,7 @@ import { isAxiosError } from 'axios';
 import { ErrorResponse } from '../shared-types';
 
 const PLAYLISTS_QUERY_KEY = 'playlists';
+const PLAYLIST_QUERY_KEY = 'playlist';
 
 export const usePlaylistsQuery = () => {
   return useQuery(
@@ -28,7 +29,7 @@ export const usePlaylistsQuery = () => {
 
 export const usePlaylistQuery = (id: number) => {
   return useQuery(
-    [PLAYLISTS_QUERY_KEY],
+    [PLAYLIST_QUERY_KEY],
     async () => await getPlaylistRequest(id),
     {
       onError: (error) => {
