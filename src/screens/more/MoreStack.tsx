@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/stack';
 import { MoreScreen } from './MoreScreen';
 import { FollowedArtistsScreen } from './followed-artists/FollowedArtistsScreen';
+import { FavoriteSongsScreen } from './FavoriteSongsScreen';
 
 const Stack = createStackNavigator<MoreStackParamList>();
 
@@ -21,6 +22,10 @@ export const MoreStack = () => {
       <Stack.Screen
         name={MoreRoutes.FOLLOWED_ARTISTS_SCREEN}
         component={FollowedArtistsScreen}
+      />
+      <Stack.Screen
+        name={MoreRoutes.FAVORITE_SONGS}
+        component={FavoriteSongsScreen}
       />
     </Stack.Navigator>
   );

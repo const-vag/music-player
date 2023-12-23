@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box } from '../../../ui-kit/Box/Box';
-import { Typography } from '../../../ui-kit/Typography';
+import { Box } from '../../../../ui-kit/Box/Box';
+import { Typography } from '../../../../ui-kit/Typography';
 import { TouchableOpacity } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { Image } from 'react-native';

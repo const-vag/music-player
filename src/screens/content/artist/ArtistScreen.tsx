@@ -82,14 +82,7 @@ export const Artist = () => {
               direction="row"
               p={uiVariables.spacer.horizontalPadding}
             >
-              <Button
-                textColor={theme.colors.onBackground}
-                uppercase
-                mode="outlined"
-                icon="play"
-              >
-                Play
-              </Button>
+              <Spacer />
               <Button
                 onPress={
                   artist.followed

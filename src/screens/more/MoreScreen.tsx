@@ -20,8 +20,9 @@ import { Container } from '../../ui-kit/Container';
 import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 import { Spacer } from '../../ui-kit/Spacer';
 import { Typography } from '../../ui-kit/Typography';
-import { FollowedArtistsSection } from './components/FollowedArtistsSection';
+import { FollowedArtistsSection } from './components/followed-artists-section/FollowedArtistsSection';
 import { useCreatePlaylistMutation } from '../../api/hooks/playlists.query';
+import { PlaylistsSection } from './components/playlists-section/PlaylistsSection';
 
 export const MoreScreen = () => {
   const { data: user, isLoading, isSuccess } = useUserQuery();
@@ -37,6 +38,8 @@ export const MoreScreen = () => {
         </Box>
         <Spacer size={30} />
         <FollowedArtistsSection />
+        <Spacer size={30} />
+        <PlaylistsSection />
       </ScrollView>
     </Container>
   );
@@ -138,7 +141,7 @@ const EnterPlaylistDialog = ({
         <Dialog.Content>
           <TextInput
             onChangeText={(i) => setName(i)}
-          style={{ width: '100%' }}
+            style={{ width: '100%' }}
             autoFocus
             mode="outlined"
             label="Name"

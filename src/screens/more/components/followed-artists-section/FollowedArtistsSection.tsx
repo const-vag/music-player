@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Button } from 'react-native-paper';
-import { useFollowedArtistsQuery } from '../../../api/hooks/user.query';
-import { Box } from '../../../ui-kit/Box/Box';
-import { Typography } from '../../../ui-kit/Typography';
-import { useContentNavigators } from '../../content/useContentNavigators';
-import { MoreRoutes, MoreStackParamList } from '../types';
+import { useFollowedArtistsQuery } from '../../../../api/hooks/user.query';
+import { Box } from '../../../../ui-kit/Box/Box';
+import { Typography } from '../../../../ui-kit/Typography';
+import { useContentNavigators } from '../../../content/useContentNavigators';
+import { MoreRoutes, MoreStackParamList } from '../../types';
 import { FollowedArtistsContentCard } from './FollowedArtistsContentCard';
 
 export const FollowedArtistsSection = () => {
