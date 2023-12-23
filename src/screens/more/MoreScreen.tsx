@@ -40,6 +40,7 @@ export const MoreScreen = () => {
         <FollowedArtistsSection />
         <Spacer size={30} />
         <PlaylistsSection />
+        <Spacer size={100} />
       </ScrollView>
     </Container>
   );

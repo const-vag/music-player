@@ -46,7 +46,7 @@ export const HomeScreen = () => {
         />
         <Spacer size={30} />
         <RadioPlaylistsSection />
-        <Spacer size={30} />
+        <Spacer size={100} />
       </ScrollView>
     </Container>
   );
