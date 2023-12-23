@@ -20,8 +20,39 @@ export const getPlaylistsRequest = async () => {
   return (await axios.get<Playlist[]>(`${playlistsUrl}`)).data;
 };
 
+export const getPlaylistRequest = async (id: number) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (await axios.get<Playlist>(`${playlistsUrl}/${id}`)).data;
+};
+
+export const getRadioPlaylistsRequest = async () => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (await axios.get<Playlist[]>(`${playlistsUrl}?auto=true`)).data;
+};
+
 export const createPlaylistRequest = async (playlistName: string) => {
   const axios = AxiosInterceptor.Instance;
 
   return (await axios.post(`${playlistsUrl}`, { name: playlistName })).data;
+};
+
+export const updatePlaylistRequest = async (properties: {
+  id: number;
+  playlistName: string;
+}) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (
+    await axios.patch(`${playlistsUrl}/${properties.id}`, {
+      name: properties.playlistName,
+    })
+  ).data;
+};
+
+export const deletePlaylistRequest = async (id: number) => {
+  const axios = AxiosInterceptor.Instance;
+
+  return (await axios.delete(`${playlistsUrl}/${id}`)).data;
 };

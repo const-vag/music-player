@@ -8,17 +8,20 @@ import { RecentlySearchedSection } from './components/RecentlySearchedSection';
 import { useHomeScreen } from './useHomeScreen';
 import { useUserQuery } from '../../api/hooks/user.query';
 import { LoadingScreen } from '../../ui-kit/LoadingScreen';
+import { useRadioPlaylistsQuery } from '../../api/hooks/playlists.query';
+import { RadioPlaylistsSection } from './components/RadioPlaylistsSection';
 
 export const HomeScreen = () => {
   const { goToSearchPage } = useHomeScreen();
-  const { isLoading } = useUserQuery();
+  const { isLoading: isUserLoading } = useUserQuery();
   const {
     artists: recentlySearchedArtists,
     songs: recentlySearchedSongs,
     albums: recentlySearchedAlbums,
   } = useRecentlySearched();
+  const { isLoading: isRadioPlaylistsLoading } = useRadioPlaylistsQuery();
 
-  if (isLoading) return <LoadingScreen />;
+  if (isUserLoading || isRadioPlaylistsLoading) return <LoadingScreen />;
 
   return (
     <Container expand centered={false}>
@@ -41,6 +44,8 @@ export const HomeScreen = () => {
           artists={recentlySearchedArtists}
           songs={recentlySearchedSongs}
         />
+        <Spacer size={30} />
+        <RadioPlaylistsSection />
         <Spacer size={30} />
       </ScrollView>
     </Container>
