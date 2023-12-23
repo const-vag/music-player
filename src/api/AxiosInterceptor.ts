@@ -36,4 +36,12 @@ export class AxiosInterceptor {
   post<T>(...params: Parameters<AxiosInstance['post']>) {
     return this.axiosInstance.post<T>(...params);
   }
+
+  patch<T>(...params: Parameters<AxiosInstance['patch']>) {
+    return this.axiosInstance.patch<T>(...params);
+  }
+
+  delete<T>(...params: Parameters<AxiosInstance['delete']>) {
+    return this.axiosInstance.delete<T>(...params);
+  }
 }
