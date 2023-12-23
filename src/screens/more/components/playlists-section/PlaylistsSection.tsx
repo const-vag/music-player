@@ -3,7 +3,7 @@ import { usePlaylistsQuery } from '../../../../api/hooks/playlists.query';
 import { Box } from '../../../../ui-kit/Box/Box';
 import { LoadingScreen } from '../../../../ui-kit/LoadingScreen';
 import { Typography } from '../../../../ui-kit/Typography';
-import { LikedSongsCard } from './LikedSongsCard';
+import { LikedSongsCard } from './FavouriteSongsCard';
 import { PlaylistCard } from './PlaylistCard';
 
 export const PlaylistsSection = () => {

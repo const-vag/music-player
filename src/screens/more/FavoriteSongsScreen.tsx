@@ -3,7 +3,7 @@ import { useFavouriteSongsQuery } from '../../api/hooks/user.query';
 import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 import { useFocusEffect } from '@react-navigation/native';
 import { useMiniPlayerControls } from '../../shared/stores/player/MiniPlayerStore';
-import PlaylistView from '../../shared/components/PlaylistView';
+import { PlaylistView } from '../../shared/components/PlaylistView';
 
 export const FavoriteSongsScreen = () => {
   const {

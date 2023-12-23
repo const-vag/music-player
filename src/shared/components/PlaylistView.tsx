@@ -14,8 +14,13 @@ import { SongCard } from './SongCard';
 type PlaylistViewProps = {
   name: string;
   songs: SongWithAlbumImage[];
+  playlistId?: number;
 };
-const PlaylistView = ({ name, songs }: PlaylistViewProps) => {
+export const PlaylistView = ({
+  name,
+  songs,
+  playlistId,
+}: PlaylistViewProps) => {
   const theme = useTheme();
 
   const { updateAndPlaySong } = usePlayerControls();
@@ -85,12 +90,10 @@ const PlaylistView = ({ name, songs }: PlaylistViewProps) => {
         data={songs}
         renderItem={({ item }: ListRenderItemInfo<SongWithAlbumImage>) => (
           <Box ph={uiVariables.spacer.horizontalPadding}>
-            <SongCard song={item} />
+            <SongCard playlistId={playlistId} song={item} />
           </Box>
         )}
       />
     </Container>
   );
 };
-
-export default PlaylistView;

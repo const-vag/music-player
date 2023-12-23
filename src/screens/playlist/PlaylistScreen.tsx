@@ -2,7 +2,7 @@ import { RouteProp, useFocusEffect, useRoute } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import { usePlaylistQuery } from '../../api/hooks/playlists.query';
 import { MainStackParamList, MainStackRoutes } from '../../navigator/types';
-import PlaylistView from '../../shared/components/PlaylistView';
+import { PlaylistView } from '../../shared/components/PlaylistView';
 import { useMiniPlayerControls } from '../../shared/stores/player/MiniPlayerStore';
 import { LoadingScreen } from '../../ui-kit/LoadingScreen';
 
@@ -29,5 +29,11 @@ export const PlaylistScreen = () => {
 
   if (isLoading || !isSuccess) return <LoadingScreen />;
 
-  return <PlaylistView name={playlist.name} songs={playlist.songs} />;
+  return (
+    <PlaylistView
+      name={playlist.name}
+      songs={playlist.songs}
+      playlistId={playlist.id}
+    />
+  );
 };

@@ -7,6 +7,7 @@ import { useSnackbarControls } from '../stores/snackbar/useSnackbarControls';
 import {
   useAddSongToPlaylistMutation,
   useLikeSongMutation,
+  useRemoveSongFromPlaylistMutation,
   useUnlikeSongMutation,
 } from '../../api/hooks/songs.query';
 import { Box } from '../../ui-kit/Box/Box';
@@ -14,20 +15,26 @@ import { Typography } from '../../ui-kit/Typography';
 import { usePlaylistsQuery } from '../../api/hooks/playlists.query';
 import { Playlist } from '../../api/requests/playlists.api';
 import { MaterialIcon } from '../../ui-kit/MaterialIcon';
+import { useIsMutating } from '@tanstack/react-query';
 
 type SongCardProps = {
   song: SongWithAlbumImage;
+  playlistId: number | undefined;
 };
 
-const SongCardComponent = ({ song }: SongCardProps) => {
+const SongCardComponent = ({ song, playlistId }: SongCardProps) => {
   const { updateAndPlaySong } = usePlayerControls();
   const { show } = useSnackbarControls();
 
   const [menuShown, setMenuShown] = useState(false);
-  const [dialogShown, setDialogShown] = useState(false);
+  const [playlistsDialogShown, setPlaylistsDialogShown] = useState(false);
+  const [deleteDialogShown, setDeleteDialogShown] = useState(false);
 
   const unlikeSongMutation = useUnlikeSongMutation();
   const likeSongMutation = useLikeSongMutation();
+  const removeSongFromPlaylistMutation = useRemoveSongFromPlaylistMutation();
+
+  const isMutating = useIsMutating() > 0;
 
   return (
     <TouchableOpacity
@@ -76,19 +83,47 @@ const SongCardComponent = ({ song }: SongCardProps) => {
                 title="Add to playlist"
                 leadingIcon="playlist-plus"
                 onPress={() => {
-                  setDialogShown(true);
+                  setPlaylistsDialogShown(true);
                   setMenuShown(false);
                 }}
               />
+              {playlistId && (
+                <Menu.Item
+                  title="Remove from playlist"
+                  leadingIcon="playlist-remove"
+                  onPress={() => {
+                    setDeleteDialogShown(true);
+                    setMenuShown(false);
+                  }}
+                />
+              )}
             </Menu>
           </Box>
         </Box>
       </Box>
       <PlaylistsDialog
         songId={song.id}
-        visible={dialogShown}
-        onHideDialog={() => setDialogShown(false)}
+        visible={playlistsDialogShown}
+        onHideDialog={() => setPlaylistsDialogShown(false)}
       />
+      {playlistId && (
+        <ConfirmDeletionDialog
+          onSubmit={async () =>
+            removeSongFromPlaylistMutation.mutate(
+              {
+                songId: song.id,
+                playlistId: playlistId,
+              },
+              {
+                onSuccess: () => setDeleteDialogShown(false),
+              }
+            )
+          }
+          visible={deleteDialogShown}
+          loading={isMutating}
+          onHideDialog={() => setDeleteDialogShown(false)}
+        />
+      )}
     </TouchableOpacity>
   );
 };
@@ -108,6 +143,8 @@ const PlaylistsDialog = ({
   const { data: playlists } = usePlaylistsQuery();
   const [selectedPlaylist, setSelectedPlaylist] = useState<Playlist>();
   const addSongToPlaylistMutation = useAddSongToPlaylistMutation();
+
+  const isMutating = useIsMutating() > 0;
 
   return (
     <Portal>
@@ -130,13 +167,16 @@ const PlaylistsDialog = ({
         <Dialog.Actions>
           <Button onPress={onHideDialog}>Cancel</Button>
           <Button
+            loading={isMutating}
             onPress={async () => {
               if (selectedPlaylist) {
-                await addSongToPlaylistMutation.mutateAsync({
-                  songId,
-                  playlistId: selectedPlaylist?.id,
-                });
-                onHideDialog();
+                await addSongToPlaylistMutation.mutateAsync(
+                  {
+                    songId,
+                    playlistId: selectedPlaylist?.id,
+                  },
+                  { onSuccess: () => onHideDialog() }
+                );
               }
             }}
           >
@@ -171,5 +211,37 @@ const PlaylistCard = ({
         {isSelected && <MaterialIcon size={25} name="check-circle" />}
       </Box>
     </TouchableOpacity>
+  );
+};
+
+type ConfirmDeletionDialogProps = {
+  visible: boolean;
+  loading: boolean;
+  onHideDialog: () => void;
+  onSubmit: () => Promise<unknown>;
+};
+
+const ConfirmDeletionDialog = ({
+  loading,
+  onHideDialog,
+  onSubmit,
+  visible,
+}: ConfirmDeletionDialogProps) => {
+  return (
+    <Portal>
+      <Dialog visible={visible} onDismiss={onHideDialog}>
+        <Dialog.Title>
+          <Typography>
+            Are you sure you want to remove this song from playlist?
+          </Typography>
+        </Dialog.Title>
+        <Dialog.Actions>
+          <Button onPress={onHideDialog}>No</Button>
+          <Button loading={loading} onPress={onSubmit}>
+            {`Yes I'm sure`}
+          </Button>
+        </Dialog.Actions>
+      </Dialog>
+    </Portal>
   );
 };

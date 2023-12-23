@@ -8,6 +8,7 @@ import {
   getNextSong,
   SongWithAlbumImage,
   addSongToPlaylist,
+  removeSongFromPlaylist,
 } from '../requests/songs.api';
 import { ErrorResponse } from '../shared-types';
 
@@ -92,6 +93,25 @@ export const useAddSongToPlaylistMutation = () => {
       if (isAxiosError<ErrorResponse>(error))
         console.log(
           'add song to playlist mutation failed: ',
+          error.response?.data
+        );
+    },
+  });
+};
+
+export const useRemoveSongFromPlaylistMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: removeSongFromPlaylist,
+    onSuccess: async () => {
+      console.log('add song to playlist mutation success');
+      queryClient.refetchQueries({ stale: true });
+    },
+    onError: (error) => {
+      if (isAxiosError<ErrorResponse>(error))
+        console.log(
+          'remove song from playlist mutation failed: ',
           error.response?.data
         );
     },

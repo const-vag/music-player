@@ -87,9 +87,10 @@ const UserSection = ({ user }: UserSectionProps) => {
 
 const AddToProfileSection = () => {
   const [menuShown, setMenuShown] = useState(false);
-  const [enterDialogShown, setEnterDialogShown] = useState(false);
-  const { mutateAsync } = useCreatePlaylistMutation();
-  const isMutating = useIsMutating();
+  const [createPlaylistDialogShown, setCreatePlaylistDialogShown] =
+    useState(false);
+  const createPlaylist = useCreatePlaylistMutation();
+  const isMutating = useIsMutating() > 0;
 
   return (
     <>
@@ -103,16 +104,20 @@ const AddToProfileSection = () => {
           title="Add playlist"
           leadingIcon="playlist-plus"
           onPress={() => {
-            setEnterDialogShown(true);
+            setCreatePlaylistDialogShown(true);
             setMenuShown(false);
           }}
         />
       </Menu>
       <EnterPlaylistDialog
-        loading={isMutating > 0}
-        onSubmit={(text: string) => mutateAsync(text)}
-        visible={enterDialogShown}
-        onHideDialog={() => setEnterDialogShown(false)}
+        loading={isMutating}
+        onSubmit={async (text: string) =>
+          createPlaylist.mutateAsync(text, {
+            onSuccess: () => setCreatePlaylistDialogShown(false),
+          })
+        }
+        visible={createPlaylistDialogShown}
+        onHideDialog={() => setCreatePlaylistDialogShown(false)}
       />
     </>
   );
@@ -155,7 +160,6 @@ const EnterPlaylistDialog = ({
             onPress={async () => {
               if (name.length >= 2) {
                 await onSubmit(name);
-                onHideDialog();
               }
             }}
           >
